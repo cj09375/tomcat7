@@ -17,25 +17,19 @@
 
 package org.apache.catalina.valves;
 
+import org.apache.catalina.AccessLog;
+import org.apache.catalina.connector.Request;
+import org.apache.catalina.connector.Response;
+import org.junit.Assert;
+import org.junit.Test;
+
+import javax.servlet.ServletException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.servlet.ServletException;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Assert;
-import org.junit.Test;
-
-import org.apache.catalina.AccessLog;
-import org.apache.catalina.connector.Request;
-import org.apache.catalina.connector.Response;
+import static org.junit.Assert.*;
 
 /**
  * {@link RemoteIpValve} Tests

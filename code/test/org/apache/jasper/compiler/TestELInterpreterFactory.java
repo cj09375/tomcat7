@@ -16,20 +16,18 @@
  */
 package org.apache.jasper.compiler;
 
-import java.io.File;
-
-import javax.servlet.ServletContext;
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
-
-import org.junit.Assert;
-import org.junit.Test;
-
 import org.apache.catalina.Context;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.startup.TomcatBaseTest;
 import org.apache.jasper.JspCompilationContext;
 import org.apache.jasper.compiler.ELInterpreterFactory.DefaultELInterpreter;
+import org.junit.Assert;
+import org.junit.Test;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+import java.io.File;
 
 public class TestELInterpreterFactory extends TomcatBaseTest {
 

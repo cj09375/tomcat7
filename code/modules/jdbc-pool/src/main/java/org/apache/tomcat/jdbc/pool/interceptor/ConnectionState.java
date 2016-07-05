@@ -16,16 +16,12 @@
  */
 package org.apache.tomcat.jdbc.pool.interceptor;
 
-import java.lang.reflect.Method;
-import java.sql.SQLException;
-
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
-import org.apache.tomcat.jdbc.pool.ConnectionPool;
-import org.apache.tomcat.jdbc.pool.DataSourceFactory;
-import org.apache.tomcat.jdbc.pool.JdbcInterceptor;
-import org.apache.tomcat.jdbc.pool.PoolConfiguration;
-import org.apache.tomcat.jdbc.pool.PooledConnection;
+import org.apache.tomcat.jdbc.pool.*;
+
+import java.lang.reflect.Method;
+import java.sql.SQLException;
 
 /**
  * Interceptor that keep track of connection state to avoid roundtrips to the database.

@@ -16,28 +16,22 @@
  */
 package org.apache.catalina.realm;
 
-import java.lang.reflect.Field;
-import java.security.MessageDigest;
-import java.security.Principal;
-
-import javax.naming.NamingEnumeration;
-import javax.naming.NamingException;
-import javax.naming.directory.BasicAttributes;
-import javax.naming.directory.DirContext;
-import javax.naming.directory.InitialDirContext;
-import javax.naming.directory.SearchControls;
-import javax.naming.directory.SearchResult;
-
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.naming.NameParserImpl;
 import org.apache.tomcat.unittest.TesterContext;
 import org.apache.tomcat.util.security.MD5Encoder;
 import org.easymock.EasyMock;
+import org.junit.Assert;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import javax.naming.NamingEnumeration;
+import javax.naming.NamingException;
+import javax.naming.directory.*;
+import java.lang.reflect.Field;
+import java.security.MessageDigest;
+import java.security.Principal;
 
 public class TestJNDIRealm {
 

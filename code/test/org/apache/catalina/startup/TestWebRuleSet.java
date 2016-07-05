@@ -16,19 +16,16 @@
  */
 package org.apache.catalina.startup;
 
+import org.apache.catalina.deploy.WebXml;
+import org.apache.tomcat.util.digester.Digester;
+import org.junit.Test;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
-
-import org.apache.catalina.deploy.WebXml;
-import org.apache.tomcat.util.digester.Digester;
+import static org.junit.Assert.*;
 
 public class TestWebRuleSet {
 

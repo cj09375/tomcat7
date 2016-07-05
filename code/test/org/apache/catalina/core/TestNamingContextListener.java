@@ -17,19 +17,18 @@
 
 package org.apache.catalina.core;
 
+import org.apache.catalina.LifecycleState;
+import org.apache.catalina.deploy.ContextEnvironment;
+import org.apache.catalina.startup.Tomcat;
+import org.apache.catalina.startup.TomcatBaseTest;
+import org.junit.Test;
+
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 import static org.junit.Assert.assertEquals;
-
-import org.junit.Test;
-
-import org.apache.catalina.LifecycleState;
-import org.apache.catalina.deploy.ContextEnvironment;
-import org.apache.catalina.startup.Tomcat;
-import org.apache.catalina.startup.TomcatBaseTest;
 
 public class TestNamingContextListener extends TomcatBaseTest {
 

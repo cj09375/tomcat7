@@ -16,8 +16,6 @@
  */
 package org.apache.catalina.tribes.test.transport;
 
-import java.text.DecimalFormat;
-
 import org.apache.catalina.tribes.ChannelMessage;
 import org.apache.catalina.tribes.Member;
 import org.apache.catalina.tribes.MessageListener;
@@ -25,6 +23,8 @@ import org.apache.catalina.tribes.io.ChannelData;
 import org.apache.catalina.tribes.io.XByteBuffer;
 import org.apache.catalina.tribes.membership.MemberImpl;
 import org.apache.catalina.tribes.transport.nio.NioReceiver;
+
+import java.text.DecimalFormat;
 
 public class SocketNioReceive {
     static int count = 0;

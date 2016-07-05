@@ -17,11 +17,10 @@
 
 package org.apache.catalina.filters;
 
-import static org.junit.Assert.assertTrue;
-
+import org.apache.catalina.filters.CsrfPreventionFilter.LruCache;
 import org.junit.Test;
 
-import org.apache.catalina.filters.CsrfPreventionFilter.LruCache;
+import static org.junit.Assert.assertTrue;
 
 public class TestCsrfPreventionFilter2 {
 

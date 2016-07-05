@@ -16,12 +16,11 @@
  */
 package org.apache.jasper.compiler;
 
-import java.util.List;
-
+import org.apache.jasper.compiler.Node.PageDirective;
 import org.junit.Assert;
 import org.junit.Test;
 
-import org.apache.jasper.compiler.Node.PageDirective;
+import java.util.List;
 
 public class TestNode {
 

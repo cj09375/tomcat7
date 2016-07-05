@@ -16,17 +16,6 @@
  */
 package org.apache.catalina.realm;
 
-import java.io.IOException;
-import java.security.Principal;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.servlet.ServletSecurityElement;
-import javax.servlet.annotation.ServletSecurity;
-
-import org.junit.Assert;
-import org.junit.Test;
-
 import org.apache.catalina.Context;
 import org.apache.catalina.connector.Request;
 import org.apache.catalina.connector.Response;
@@ -36,6 +25,15 @@ import org.apache.catalina.startup.TesterMapRealm;
 import org.apache.tomcat.unittest.TesterContext;
 import org.apache.tomcat.unittest.TesterRequest;
 import org.apache.tomcat.unittest.TesterResponse;
+import org.junit.Assert;
+import org.junit.Test;
+
+import javax.servlet.ServletSecurityElement;
+import javax.servlet.annotation.ServletSecurity;
+import java.io.IOException;
+import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TestRealmBase {
 

@@ -16,25 +16,19 @@
  */
 package org.apache.catalina.startup;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Set;
-
-import javax.servlet.Servlet;
-import javax.servlet.ServletContainerInitializer;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.junit.Assert;
-import org.junit.Test;
-
 import org.apache.catalina.Context;
 import org.apache.catalina.core.StandardContext;
 import org.apache.tomcat.util.buf.ByteChunk;
+import org.junit.Assert;
+import org.junit.Test;
+
+import javax.servlet.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
+import java.util.Set;
 
 public class TestContextConfig extends TomcatBaseTest {
 

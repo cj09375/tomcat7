@@ -16,14 +16,13 @@
  */
 package javax.el;
 
-import java.beans.FeatureDescriptor;
-import java.beans.PropertyDescriptor;
-import java.util.Iterator;
-
+import org.apache.jasper.el.ELContextImpl;
 import org.junit.Assert;
 import org.junit.Test;
 
-import org.apache.jasper.el.ELContextImpl;
+import java.beans.FeatureDescriptor;
+import java.beans.PropertyDescriptor;
+import java.util.Iterator;
 
 public class TestBeanELResolver {
 

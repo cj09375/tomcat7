@@ -16,20 +16,18 @@
  */
 package org.apache.catalina.connector;
 
-import java.io.IOException;
+import org.apache.catalina.Context;
+import org.apache.catalina.startup.SimpleHttpClient;
+import org.apache.catalina.startup.Tomcat;
+import org.apache.catalina.startup.TomcatBaseTest;
+import org.junit.Assert;
+import org.junit.Test;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.junit.Assert;
-import org.junit.Test;
-
-import org.apache.catalina.Context;
-import org.apache.catalina.startup.SimpleHttpClient;
-import org.apache.catalina.startup.Tomcat;
-import org.apache.catalina.startup.TomcatBaseTest;
+import java.io.IOException;
 
 public class TestMaxConnections extends TomcatBaseTest {
     private static final int MAX_CONNECTIONS = 3;

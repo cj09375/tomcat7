@@ -16,13 +16,13 @@
  */
 package org.apache.catalina.connector;
 
+import org.apache.catalina.startup.LoggingBaseTest;
+import org.apache.tomcat.unittest.TesterRequest;
+import org.junit.Test;
+
 import java.net.URI;
 
 import static org.junit.Assert.assertTrue;
-import org.junit.Test;
-
-import org.apache.catalina.startup.LoggingBaseTest;
-import org.apache.tomcat.unittest.TesterRequest;
 
 public class TestResponsePerformance extends LoggingBaseTest {
 

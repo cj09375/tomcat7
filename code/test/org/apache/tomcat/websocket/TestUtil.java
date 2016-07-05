@@ -16,18 +16,13 @@
  */
 package org.apache.tomcat.websocket;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.websocket.EncodeException;
-import javax.websocket.Encoder;
-import javax.websocket.EndpointConfig;
-import javax.websocket.Extension;
-import javax.websocket.Extension.Parameter;
-import javax.websocket.MessageHandler;
-
 import org.junit.Assert;
 import org.junit.Test;
+
+import javax.websocket.*;
+import javax.websocket.Extension.Parameter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TestUtil {
 

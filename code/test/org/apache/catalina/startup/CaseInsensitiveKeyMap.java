@@ -16,13 +16,7 @@
  */
 package org.apache.catalina.startup;
 
-import java.util.AbstractMap;
-import java.util.AbstractSet;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * A Map implementation that uses case-insensitive (using {@link

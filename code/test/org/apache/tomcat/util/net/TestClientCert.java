@@ -16,17 +16,16 @@
  */
 package org.apache.tomcat.util.net;
 
-import java.util.Arrays;
-
-import static org.junit.Assert.assertEquals;
-
-import org.junit.Assume;
-import org.junit.Test;
-
 import org.apache.catalina.Context;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.startup.TomcatBaseTest;
 import org.apache.tomcat.util.buf.ByteChunk;
+import org.junit.Assume;
+import org.junit.Test;
+
+import java.util.Arrays;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * The keys and certificates used in this file are all available in svn and were

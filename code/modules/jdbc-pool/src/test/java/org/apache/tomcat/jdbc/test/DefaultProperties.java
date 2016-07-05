@@ -16,10 +16,10 @@
  */
 package org.apache.tomcat.jdbc.test;
 
-import java.util.Properties;
-
 import org.apache.tomcat.jdbc.pool.DataSourceFactory;
 import org.apache.tomcat.jdbc.pool.PoolProperties;
+
+import java.util.Properties;
 
 /**
  * @author Filip Hanik

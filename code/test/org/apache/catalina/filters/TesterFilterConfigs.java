@@ -16,12 +16,11 @@
  */
 package org.apache.catalina.filters;
 
-import java.util.Enumeration;
+import org.apache.tomcat.unittest.TesterServletContext;
 
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletContext;
-
-import org.apache.tomcat.unittest.TesterServletContext;
+import java.util.Enumeration;
 
 public class TesterFilterConfigs {
     public static final String HTTPS_WWW_APACHE_ORG = "https://www.apache.org";

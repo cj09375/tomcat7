@@ -16,20 +16,18 @@
  */
 package org.apache.tomcat.jdbc.test;
 
+import org.apache.tomcat.jdbc.pool.DataSourceProxy;
+import org.apache.tomcat.jdbc.test.driver.Driver;
+import org.junit.After;
+import org.junit.Test;
+
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
-
-import javax.sql.DataSource;
-
-import org.junit.After;
-import org.junit.Test;
-
-import org.apache.tomcat.jdbc.pool.DataSourceProxy;
-import org.apache.tomcat.jdbc.test.driver.Driver;
 
 public class ConnectCountTest extends DefaultTestCase {
 

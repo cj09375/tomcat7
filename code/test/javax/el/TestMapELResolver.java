@@ -16,16 +16,15 @@
  */
 package javax.el;
 
+import org.apache.jasper.el.ELContextImpl;
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.beans.FeatureDescriptor;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-
-import org.junit.Assert;
-import org.junit.Test;
-
-import org.apache.jasper.el.ELContextImpl;
 
 public class TestMapELResolver {
 

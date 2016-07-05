@@ -16,25 +16,19 @@
  */
 package org.apache.tomcat.jdbc.test;
 
-import java.lang.management.ManagementFactory;
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
+import org.apache.tomcat.jdbc.pool.ConnectionPool;
+import org.apache.tomcat.jdbc.pool.interceptor.SlowQueryReport;
+import org.apache.tomcat.jdbc.pool.interceptor.SlowQueryReportJmx;
+import org.junit.Assert;
+import org.junit.Test;
 
 import javax.management.AttributeChangeNotification;
 import javax.management.Notification;
 import javax.management.NotificationListener;
-
-import org.junit.Assert;
-import org.junit.Test;
-
-import org.apache.tomcat.jdbc.pool.ConnectionPool;
-import org.apache.tomcat.jdbc.pool.interceptor.SlowQueryReport;
-import org.apache.tomcat.jdbc.pool.interceptor.SlowQueryReportJmx;
+import java.lang.management.ManagementFactory;
+import java.sql.*;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class TestSlowQueryReport extends DefaultTestCase {
 

@@ -16,12 +16,12 @@
  */
 package org.apache.el.lang;
 
+import org.junit.Test;
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
 import static org.junit.Assert.assertEquals;
-
-import org.junit.Test;
 
 public class TestELArithmetic {
     private static final String a = "1.1";

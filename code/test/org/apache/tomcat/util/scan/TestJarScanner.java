@@ -17,12 +17,11 @@
 
 package org.apache.tomcat.util.scan;
 
-import java.util.StringTokenizer;
-
+import org.apache.catalina.startup.TomcatBaseTest;
 import org.junit.Assert;
 import org.junit.Test;
 
-import org.apache.catalina.startup.TomcatBaseTest;
+import java.util.StringTokenizer;
 
 public class TestJarScanner extends TomcatBaseTest {
 

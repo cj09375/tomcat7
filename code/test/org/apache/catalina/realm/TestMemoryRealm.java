@@ -16,10 +16,10 @@
 */
 package org.apache.catalina.realm;
 
-import java.security.Principal;
-
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.security.Principal;
 
 public class TestMemoryRealm {
 

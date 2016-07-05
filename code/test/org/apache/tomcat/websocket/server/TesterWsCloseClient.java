@@ -16,14 +16,13 @@
  */
 package org.apache.tomcat.websocket.server;
 
+import org.apache.tomcat.util.buf.B2CConverter;
+
+import javax.websocket.CloseReason.CloseCode;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
-
-import javax.websocket.CloseReason.CloseCode;
-
-import org.apache.tomcat.util.buf.B2CConverter;
 
 /**
  * A client for testing Websocket behavior that differs from standard client

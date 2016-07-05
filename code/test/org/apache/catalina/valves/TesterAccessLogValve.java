@@ -16,18 +16,17 @@
  */
 package org.apache.catalina.valves;
 
+import org.apache.catalina.AccessLog;
+import org.apache.catalina.connector.Request;
+import org.apache.catalina.connector.Response;
+
+import javax.servlet.ServletException;
 import java.io.IOException;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-import javax.servlet.ServletException;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
-import org.apache.catalina.AccessLog;
-import org.apache.catalina.connector.Request;
-import org.apache.catalina.connector.Response;
 
 public class TesterAccessLogValve extends ValveBase implements AccessLog {
 

@@ -16,17 +16,15 @@
  */
 package org.apache.jasper.runtime;
 
-import java.io.File;
-
-import javax.servlet.http.HttpServletResponse;
-
-import org.junit.Assert;
-import org.junit.Test;
-
 import org.apache.catalina.core.StandardContext;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.startup.TomcatBaseTest;
 import org.apache.tomcat.util.buf.ByteChunk;
+import org.junit.Assert;
+import org.junit.Test;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 
 public class TestJspContextWrapper extends TomcatBaseTest {
 

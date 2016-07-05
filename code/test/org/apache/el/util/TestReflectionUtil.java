@@ -16,9 +16,9 @@
  */
 package org.apache.el.util;
 
-import javax.el.MethodNotFoundException;
-
 import org.junit.Test;
+
+import javax.el.MethodNotFoundException;
 
 public class TestReflectionUtil {
 

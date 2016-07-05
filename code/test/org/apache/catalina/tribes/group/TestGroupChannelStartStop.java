@@ -16,14 +16,13 @@
  */
 package org.apache.catalina.tribes.group;
 
-import static org.junit.Assert.assertEquals;
-
+import org.apache.catalina.tribes.Channel;
+import org.apache.catalina.tribes.transport.ReceiverBase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import org.apache.catalina.tribes.Channel;
-import org.apache.catalina.tribes.transport.ReceiverBase;
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author Filip Hanik

@@ -16,13 +16,13 @@
  */
 package org.apache.catalina.session;
 
+import org.junit.Test;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
 import static org.junit.Assert.fail;
-
-import org.junit.Test;
 
 /**
  * The design of the session manager depends on the thread-safety - or not - of

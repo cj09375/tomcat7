@@ -16,18 +16,17 @@
  */
 package org.apache.jasper.compiler;
 
-import javax.el.ELContext;
-import javax.el.ELException;
-import javax.el.ExpressionFactory;
-import javax.el.ValueExpression;
-
-import org.junit.Assert;
-import org.junit.Test;
-
 import org.apache.jasper.JasperException;
 import org.apache.jasper.compiler.ELNode.Nodes;
 import org.apache.jasper.compiler.ELParser.TextBuilder;
 import org.apache.jasper.el.ELContextImpl;
+import org.junit.Assert;
+import org.junit.Test;
+
+import javax.el.ELContext;
+import javax.el.ELException;
+import javax.el.ExpressionFactory;
+import javax.el.ValueExpression;
 
 /**
  * You will need to keep your wits about you when working with this class. Keep

@@ -16,20 +16,14 @@
  */
 package org.apache.catalina.startup;
 
-import java.util.Set;
+import org.apache.catalina.Context;
+import org.junit.Test;
 
-import javax.servlet.ServletContainerInitializer;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
-import javax.servlet.ServletException;
+import javax.servlet.*;
+import java.util.Set;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
-
-import org.apache.catalina.Context;
 
 public class TestListener extends TomcatBaseTest {
 

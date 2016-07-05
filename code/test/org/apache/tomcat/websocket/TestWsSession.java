@@ -16,10 +16,10 @@
  */
 package org.apache.tomcat.websocket;
 
-import java.nio.ByteBuffer;
-
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.nio.ByteBuffer;
 
 public class TestWsSession {
 

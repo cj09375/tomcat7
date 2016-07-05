@@ -16,10 +16,9 @@
  */
 package org.apache.tomcat.jdbc.test;
 
+import org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;
 import org.junit.Before;
 import org.junit.Test;
-
-import org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;
 
 public class Bug50571 extends DefaultTestCase{
 

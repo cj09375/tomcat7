@@ -16,13 +16,13 @@
  */
 package org.apache.catalina.tribes.membership;
 
+import org.junit.Before;
+import org.junit.Test;
+
 import java.util.Arrays;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
-import org.junit.Before;
-import org.junit.Test;
 
 /**
  * <p>Title: </p>

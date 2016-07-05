@@ -17,18 +17,17 @@
  */
 package org.apache.tomcat.util.file;
 
+import org.apache.naming.resources.DirContextURLStreamHandlerFactory;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
+import org.junit.Assert;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
-import org.apache.naming.resources.DirContextURLStreamHandlerFactory;
-import org.apache.tomcat.util.http.fileupload.FileUtils;
 
 public class TestConfigFileLoader {
 

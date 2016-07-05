@@ -16,21 +16,13 @@
  */
 package org.apache.tomcat.unittest;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import javax.servlet.ServletContext;
-import javax.servlet.SessionTrackingMode;
-
 import org.apache.catalina.Context;
 import org.apache.catalina.connector.Request;
 import org.apache.catalina.session.StandardSession;
+
+import javax.servlet.ServletContext;
+import javax.servlet.SessionTrackingMode;
+import java.util.*;
 
 public class TesterRequest extends Request {
 

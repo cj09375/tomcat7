@@ -16,26 +16,6 @@
  */
 package org.apache.catalina.startup;
 
-import java.beans.PropertyChangeListener;
-import java.io.File;
-import java.net.URL;
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.servlet.DispatcherType;
-import javax.servlet.Servlet;
-import javax.servlet.ServletContainerInitializer;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
-import org.junit.Test;
-
 import org.apache.catalina.Container;
 import org.apache.catalina.Loader;
 import org.apache.catalina.core.StandardContext;
@@ -43,6 +23,16 @@ import org.apache.catalina.deploy.FilterDef;
 import org.apache.catalina.deploy.FilterMap;
 import org.apache.catalina.deploy.ServletDef;
 import org.apache.catalina.deploy.WebXml;
+import org.junit.Test;
+
+import javax.servlet.*;
+import java.beans.PropertyChangeListener;
+import java.io.File;
+import java.net.URL;
+import java.util.HashSet;
+import java.util.Set;
+
+import static org.junit.Assert.*;
 
 /**
  * Check Servlet 3.0 Spec 8.2.3.3: Override annotation parameter from web.xml or

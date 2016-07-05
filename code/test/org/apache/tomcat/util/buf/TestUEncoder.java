@@ -17,14 +17,13 @@
 
 package org.apache.tomcat.util.buf;
 
+import org.apache.tomcat.util.buf.UEncoder.SafeCharsSet;
+import org.junit.Test;
+
 import java.io.IOException;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-
-import org.junit.Test;
-
-import org.apache.tomcat.util.buf.UEncoder.SafeCharsSet;
 
 /**
  * Test cases for {@link UEncoder}.

@@ -16,6 +16,12 @@
  */
 package org.apache.tomcat.jdbc.test;
 
+import org.apache.tomcat.jdbc.test.driver.Connection;
+import org.apache.tomcat.jdbc.test.driver.Driver;
+import org.junit.Assert;
+import org.junit.Test;
+
+import javax.sql.PooledConnection;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
@@ -23,14 +29,6 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-
-import javax.sql.PooledConnection;
-
-import org.junit.Assert;
-import org.junit.Test;
-
-import org.apache.tomcat.jdbc.test.driver.Connection;
-import org.apache.tomcat.jdbc.test.driver.Driver;
 
 public class AlternateUsernameTest extends DefaultTestCase {
 

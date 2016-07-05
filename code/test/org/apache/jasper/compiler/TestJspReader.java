@@ -16,14 +16,13 @@
  */
 package org.apache.jasper.compiler;
 
-import java.io.File;
-
-import org.junit.Assert;
-import org.junit.Test;
-
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.startup.TomcatBaseTest;
 import org.apache.tomcat.util.buf.ByteChunk;
+import org.junit.Assert;
+import org.junit.Test;
+
+import java.io.File;
 
 public class TestJspReader extends TomcatBaseTest {
 

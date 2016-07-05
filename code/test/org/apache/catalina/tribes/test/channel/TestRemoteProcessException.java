@@ -16,6 +16,12 @@
  */
 package org.apache.catalina.tribes.test.channel;
 
+import org.apache.catalina.tribes.*;
+import org.apache.catalina.tribes.group.GroupChannel;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
 import java.io.PrintStream;
 import java.io.Serializable;
 import java.util.Arrays;
@@ -23,18 +29,6 @@ import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-import org.apache.catalina.tribes.Channel;
-import org.apache.catalina.tribes.ChannelException;
-import org.apache.catalina.tribes.ChannelListener;
-import org.apache.catalina.tribes.ManagedChannel;
-import org.apache.catalina.tribes.Member;
-import org.apache.catalina.tribes.TesterUtil;
-import org.apache.catalina.tribes.group.GroupChannel;
 
 /**
  * <p>Title: </p>

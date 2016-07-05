@@ -16,14 +16,14 @@
  */
 package org.apache.tomcat.websocket.pojo;
 
+import org.apache.tomcat.websocket.server.Constants;
+import org.apache.tomcat.websocket.server.WsContextListener;
+
 import javax.servlet.ServletContextEvent;
 import javax.websocket.ClientEndpoint;
 import javax.websocket.DeploymentException;
 import javax.websocket.server.ServerContainer;
 import javax.websocket.server.ServerEndpointConfig.Configurator;
-
-import org.apache.tomcat.websocket.server.Constants;
-import org.apache.tomcat.websocket.server.WsContextListener;
 
 public class TesterUtil {
 

@@ -17,21 +17,17 @@
 
 package org.apache.catalina.filters;
 
+import org.apache.catalina.filters.CsrfPreventionFilter.LruCache;
+import org.apache.catalina.startup.TomcatBaseTest;
+import org.junit.Test;
+
+import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import javax.servlet.http.HttpServletResponse;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
-
-import org.apache.catalina.filters.CsrfPreventionFilter.LruCache;
-import org.apache.catalina.startup.TomcatBaseTest;
+import static org.junit.Assert.*;
 
 public class TestCsrfPreventionFilter extends TomcatBaseTest {
 

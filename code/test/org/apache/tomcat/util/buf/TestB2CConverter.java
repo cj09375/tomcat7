@@ -16,12 +16,12 @@
  */
 package org.apache.tomcat.util.buf;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.nio.charset.Charset;
 import java.nio.charset.MalformedInputException;
 import java.util.Locale;
-
-import org.junit.Assert;
-import org.junit.Test;
 
 public class TestB2CConverter {
 

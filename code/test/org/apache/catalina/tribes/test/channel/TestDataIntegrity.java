@@ -16,23 +16,18 @@
  */
 package org.apache.catalina.tribes.test.channel;
 
+import org.apache.catalina.tribes.*;
+import org.apache.catalina.tribes.group.GroupChannel;
+import org.apache.catalina.tribes.group.interceptors.MessageDispatch15Interceptor;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-import org.apache.catalina.tribes.Channel;
-import org.apache.catalina.tribes.ChannelListener;
-import org.apache.catalina.tribes.ManagedChannel;
-import org.apache.catalina.tribes.Member;
-import org.apache.catalina.tribes.TesterUtil;
-import org.apache.catalina.tribes.group.GroupChannel;
-import org.apache.catalina.tribes.group.interceptors.MessageDispatch15Interceptor;
 
 /**
  * <p>Title: </p>

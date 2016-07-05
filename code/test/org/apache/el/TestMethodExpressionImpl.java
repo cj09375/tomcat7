@@ -17,20 +17,16 @@
 
 package org.apache.el;
 
+import org.apache.jasper.el.ELContextImpl;
+import org.junit.Before;
+import org.junit.Test;
+
 import javax.el.ELContext;
 import javax.el.ExpressionFactory;
 import javax.el.MethodExpression;
 import javax.el.ValueExpression;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Before;
-import org.junit.Test;
-
-import org.apache.jasper.el.ELContextImpl;
+import static org.junit.Assert.*;
 
 public class TestMethodExpressionImpl {
 

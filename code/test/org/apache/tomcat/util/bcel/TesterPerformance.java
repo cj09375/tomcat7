@@ -16,6 +16,12 @@
  */
 package org.apache.tomcat.util.bcel;
 
+import org.apache.tomcat.util.bcel.classfile.ClassParser;
+import org.apache.tomcat.util.scan.Jar;
+import org.apache.tomcat.util.scan.JarFactory;
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,13 +29,6 @@ import java.net.URL;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
-
-import org.junit.Assert;
-import org.junit.Test;
-
-import org.apache.tomcat.util.bcel.classfile.ClassParser;
-import org.apache.tomcat.util.scan.Jar;
-import org.apache.tomcat.util.scan.JarFactory;
 
 public class TesterPerformance {
 

@@ -16,18 +16,17 @@
  */
 package org.apache.catalina.filters;
 
-import java.io.IOException;
-import java.util.LinkedHashSet;
-import java.util.Locale;
-import java.util.Set;
+import org.junit.Assert;
+import org.junit.Test;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.junit.Assert;
-import org.junit.Test;
+import java.io.IOException;
+import java.util.LinkedHashSet;
+import java.util.Locale;
+import java.util.Set;
 
 public class TestCorsFilter {
     private FilterChain filterChain = new TesterFilterChain();

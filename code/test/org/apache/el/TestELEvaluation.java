@@ -17,24 +17,19 @@
 
 package org.apache.el;
 
-import java.io.File;
-import java.lang.reflect.Method;
-import java.util.Date;
+import org.apache.el.lang.ELSupport;
+import org.apache.jasper.el.ELContextImpl;
+import org.junit.Assert;
+import org.junit.Test;
 
 import javax.el.ELException;
 import javax.el.FunctionMapper;
 import javax.el.ValueExpression;
+import java.io.File;
+import java.lang.reflect.Method;
+import java.util.Date;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
-import org.junit.Assert;
-import org.junit.Test;
-
-import org.apache.el.lang.ELSupport;
-import org.apache.jasper.el.ELContextImpl;
+import static org.junit.Assert.*;
 
 /**
  * Tests the EL engine directly. Similar tests may be found in

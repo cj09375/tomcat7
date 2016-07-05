@@ -16,20 +16,6 @@
  */
 package org.apache.catalina.loader;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.concurrent.Executor;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.logging.Filter;
-import java.util.logging.LogManager;
-import java.util.logging.LogRecord;
-
-import javax.servlet.http.HttpServletResponse;
-
-import org.junit.Assert;
-import org.junit.Ignore;
-import org.junit.Test;
-
 import org.apache.catalina.Context;
 import org.apache.catalina.core.JreMemoryLeakPreventionListener;
 import org.apache.catalina.core.StandardHost;
@@ -37,6 +23,18 @@ import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.startup.TomcatBaseTest;
 import org.apache.tomcat.util.buf.ByteChunk;
 import org.apache.tomcat.util.threads.ThreadPoolExecutor;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Test;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.concurrent.Executor;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.logging.Filter;
+import java.util.logging.LogManager;
+import java.util.logging.LogRecord;
 
 /*
  * These unit tests are ignored by default as they are not reliable. They have

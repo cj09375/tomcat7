@@ -16,12 +16,11 @@
  */
 package org.apache.tomcat.jdbc.test;
 
-import java.sql.Connection;
-
+import org.apache.tomcat.jdbc.pool.PooledConnection;
 import org.junit.Assert;
 import org.junit.Test;
 
-import org.apache.tomcat.jdbc.pool.PooledConnection;
+import java.sql.Connection;
 
 public class TestSuspectTimeout extends DefaultTestCase {
 

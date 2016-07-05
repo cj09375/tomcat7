@@ -17,12 +17,11 @@
 
 package org.apache.tomcat.util.http;
 
-import static org.junit.Assert.assertEquals;
-
-import org.junit.Test;
-
 import org.apache.catalina.startup.Tomcat;
 import org.apache.tomcat.util.buf.ByteChunk;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Test case for {@link Cookies}. <b>Note</b> because of the use of <code>final

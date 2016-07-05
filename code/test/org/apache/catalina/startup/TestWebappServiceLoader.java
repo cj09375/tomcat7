@@ -16,14 +16,12 @@
  */
 package org.apache.catalina.startup;
 
-import java.io.File;
-import java.util.Collection;
-
-import javax.servlet.ServletContainerInitializer;
-
+import org.apache.catalina.core.StandardContext;
 import org.junit.Test;
 
-import org.apache.catalina.core.StandardContext;
+import javax.servlet.ServletContainerInitializer;
+import java.io.File;
+import java.util.Collection;
 
 public class TestWebappServiceLoader extends TomcatBaseTest {
     @Test

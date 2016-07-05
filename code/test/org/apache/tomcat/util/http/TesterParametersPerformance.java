@@ -16,15 +16,15 @@
  */
 package org.apache.tomcat.util.http;
 
+import org.apache.tomcat.util.buf.B2CConverter;
+import org.junit.Test;
+
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
 
 import static org.junit.Assert.assertEquals;
-import org.junit.Test;
-
-import org.apache.tomcat.util.buf.B2CConverter;
 
 public class TesterParametersPerformance {
 

@@ -16,10 +16,10 @@
  */
 package org.apache.tomcat.websocket.server;
 
-import java.util.Map;
-
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.Map;
 
 public class TestUriTemplate {
 

@@ -17,12 +17,11 @@
 
 package org.apache.catalina.core;
 
-import static org.junit.Assert.assertTrue;
-
+import org.apache.catalina.LifecycleState;
 import org.junit.Before;
 import org.junit.Test;
 
-import org.apache.catalina.LifecycleState;
+import static org.junit.Assert.assertTrue;
 
 public class TestApplicationSessionCookieConfig {
     private ApplicationSessionCookieConfig applicationSessionCookieConfig;

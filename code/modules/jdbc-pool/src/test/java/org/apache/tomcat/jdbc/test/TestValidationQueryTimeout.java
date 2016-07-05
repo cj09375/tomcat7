@@ -16,22 +16,15 @@
  */
 package org.apache.tomcat.jdbc.test;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.DriverPropertyInfo;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.SQLFeatureNotSupportedException;
-import java.sql.Statement;
-import java.util.Properties;
-import java.util.logging.Logger;
-
+import org.apache.tomcat.jdbc.pool.interceptor.QueryTimeoutInterceptor;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import org.apache.tomcat.jdbc.pool.interceptor.QueryTimeoutInterceptor;
+import java.sql.*;
+import java.util.Properties;
+import java.util.logging.Logger;
 
 public class TestValidationQueryTimeout extends DefaultTestCase {
 

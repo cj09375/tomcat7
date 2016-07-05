@@ -16,12 +16,11 @@
  */
 package org.apache.coyote.ajp;
 
+import javax.net.SocketFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
 import java.util.Locale;
-
-import javax.net.SocketFactory;
 
 /**
  * AJP client that is not (yet) a full AJP client implementation as it just

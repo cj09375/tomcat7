@@ -16,20 +16,19 @@
  */
 package org.apache.catalina.tribes.group.interceptors;
 
-import java.util.ArrayList;
-
-import static org.junit.Assert.assertEquals;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
 import org.apache.catalina.tribes.Channel;
 import org.apache.catalina.tribes.ManagedChannel;
 import org.apache.catalina.tribes.Member;
 import org.apache.catalina.tribes.MembershipListener;
 import org.apache.catalina.tribes.group.GroupChannel;
 import org.apache.catalina.tribes.util.UUIDGenerator;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
 
 public class TestDomainFilterInterceptor {
     private static int count = 10;

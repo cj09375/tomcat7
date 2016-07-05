@@ -16,11 +16,11 @@
  */
 package org.apache.tomcat.jdbc.test;
 
-import java.sql.Connection;
-import java.util.concurrent.Future;
-
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.sql.Connection;
+import java.util.concurrent.Future;
 
 public class Bug50805 extends DefaultTestCase {
 

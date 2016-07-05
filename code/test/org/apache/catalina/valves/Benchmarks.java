@@ -17,10 +17,10 @@
 
 package org.apache.catalina.valves;
 
+import org.junit.Test;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import org.junit.Test;
 
 /**
  * Some simple micro-benchmarks to help determine best approach for thread

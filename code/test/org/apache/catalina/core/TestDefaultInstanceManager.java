@@ -16,14 +16,14 @@
  */
 package org.apache.catalina.core;
 
-import java.io.File;
-
-import static org.junit.Assert.assertEquals;
-import org.junit.Test;
-
 import org.apache.catalina.Wrapper;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.startup.TomcatBaseTest;
+import org.junit.Test;
+
+import java.io.File;
+
+import static org.junit.Assert.assertEquals;
 
 
 public class TestDefaultInstanceManager extends TomcatBaseTest {

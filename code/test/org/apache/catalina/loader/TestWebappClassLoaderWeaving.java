@@ -16,6 +16,12 @@
  */
 package org.apache.catalina.loader;
 
+import org.apache.catalina.Context;
+import org.apache.catalina.startup.Tomcat;
+import org.apache.catalina.startup.TomcatBaseTest;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
+import org.junit.*;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -24,21 +30,7 @@ import java.lang.instrument.ClassFileTransformer;
 import java.lang.reflect.Method;
 import java.security.ProtectionDomain;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.fail;
-
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
-import org.apache.catalina.Context;
-import org.apache.catalina.startup.Tomcat;
-import org.apache.catalina.startup.TomcatBaseTest;
-import org.apache.tomcat.util.http.fileupload.FileUtils;
+import static org.junit.Assert.*;
 
 public class TestWebappClassLoaderWeaving extends TomcatBaseTest {
 

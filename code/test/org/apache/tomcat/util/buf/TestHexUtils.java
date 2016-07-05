@@ -17,9 +17,9 @@
 
 package org.apache.tomcat.util.buf;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Test cases for {@link HexUtils}.

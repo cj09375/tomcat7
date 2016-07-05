@@ -16,13 +16,12 @@
  */
 package org.apache.tomcat.jdbc.test;
 
-import java.sql.Connection;
-
-import org.junit.Test;
-
 import org.apache.tomcat.jdbc.pool.ConnectionPool;
 import org.apache.tomcat.jdbc.pool.JdbcInterceptor;
 import org.apache.tomcat.jdbc.pool.PooledConnection;
+import org.junit.Test;
+
+import java.sql.Connection;
 
 public class TestException extends DefaultTestCase {
 

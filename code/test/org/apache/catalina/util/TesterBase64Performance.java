@@ -16,16 +16,14 @@
  */
 package org.apache.catalina.util;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.xml.bind.DatatypeConverter;
-
-import org.junit.Test;
-
 import org.apache.tomcat.util.buf.B2CConverter;
 import org.apache.tomcat.util.buf.ByteChunk;
 import org.apache.tomcat.util.buf.CharChunk;
+import org.junit.Test;
+
+import javax.xml.bind.DatatypeConverter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TesterBase64Performance {
 

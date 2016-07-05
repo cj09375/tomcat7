@@ -16,10 +16,10 @@
  */
 package org.apache.tomcat.util.buf;
 
-import java.math.BigInteger;
-
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.math.BigInteger;
 
 public class TestAscii {
 

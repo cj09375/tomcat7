@@ -16,18 +16,16 @@
  */
 package org.apache.jasper.compiler;
 
-import java.io.File;
+import org.apache.catalina.Context;
+import org.apache.catalina.startup.Tomcat;
+import org.apache.catalina.startup.TomcatBaseTest;
+import org.junit.Assert;
+import org.junit.Test;
 
 import javax.servlet.ServletContext;
 import javax.servlet.jsp.tagext.TagFileInfo;
 import javax.servlet.jsp.tagext.TagInfo;
-
-import org.junit.Assert;
-import org.junit.Test;
-
-import org.apache.catalina.Context;
-import org.apache.catalina.startup.Tomcat;
-import org.apache.catalina.startup.TomcatBaseTest;
+import java.io.File;
 
 /**
  * Test case for {@link TagPluginManager}.

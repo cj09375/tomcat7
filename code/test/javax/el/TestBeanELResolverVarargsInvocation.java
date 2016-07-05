@@ -16,13 +16,13 @@
  */
 package javax.el;
 
-import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TestBeanELResolverVarargsInvocation {
     public static class Foo {

@@ -16,6 +16,20 @@
  */
 package org.apache.tomcat.websocket;
 
+import org.apache.catalina.Context;
+import org.apache.catalina.servlets.DefaultServlet;
+import org.apache.catalina.startup.Tomcat;
+import org.apache.catalina.startup.TomcatBaseTest;
+import org.apache.tomcat.util.buf.B2CConverter;
+import org.apache.tomcat.websocket.TesterMessageCountClient.*;
+import org.junit.Assert;
+import org.junit.Test;
+
+import javax.websocket.ClientEndpointConfig.Builder;
+import javax.websocket.ContainerProvider;
+import javax.websocket.Endpoint;
+import javax.websocket.Session;
+import javax.websocket.WebSocketContainer;
 import java.io.OutputStream;
 import java.io.Writer;
 import java.net.URI;
@@ -24,27 +38,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
-
-import javax.websocket.ClientEndpointConfig.Builder;
-import javax.websocket.ContainerProvider;
-import javax.websocket.Endpoint;
-import javax.websocket.Session;
-import javax.websocket.WebSocketContainer;
-
-import org.junit.Assert;
-import org.junit.Test;
-
-import org.apache.catalina.Context;
-import org.apache.catalina.servlets.DefaultServlet;
-import org.apache.catalina.startup.Tomcat;
-import org.apache.catalina.startup.TomcatBaseTest;
-import org.apache.tomcat.util.buf.B2CConverter;
-import org.apache.tomcat.websocket.TesterMessageCountClient.AsyncBinary;
-import org.apache.tomcat.websocket.TesterMessageCountClient.AsyncHandler;
-import org.apache.tomcat.websocket.TesterMessageCountClient.AsyncText;
-import org.apache.tomcat.websocket.TesterMessageCountClient.TesterAnnotatedEndpoint;
-import org.apache.tomcat.websocket.TesterMessageCountClient.TesterEndpoint;
-import org.apache.tomcat.websocket.TesterMessageCountClient.TesterProgrammaticEndpoint;
 
 public class TestWsRemoteEndpoint extends TomcatBaseTest {
 

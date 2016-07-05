@@ -16,19 +16,17 @@
  */
 package org.apache.tomcat.util.descriptor;
 
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+
+import javax.servlet.ServletContext;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.servlet.ServletContext;
-
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
 
 public class TestLocalResolver {
 

@@ -16,15 +16,13 @@
  */
 package org.apache.tomcat.jdbc.test;
 
-import java.sql.Connection;
-
-import javax.sql.PooledConnection;
-
+import org.apache.tomcat.jdbc.test.driver.Driver;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import org.apache.tomcat.jdbc.test.driver.Driver;
+import javax.sql.PooledConnection;
+import java.sql.Connection;
 
 public class EqualsHashCodeTest extends DefaultTestCase{
     public static final String password = "password";

@@ -16,29 +16,16 @@
  */
 package org.apache.tomcat.unittest;
 
+import org.apache.catalina.core.ApplicationFilterRegistration;
+import org.apache.catalina.deploy.FilterDef;
+
+import javax.servlet.*;
+import javax.servlet.ServletRegistration.Dynamic;
+import javax.servlet.descriptor.JspConfigDescriptor;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Enumeration;
-import java.util.EventListener;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-
-import javax.servlet.Filter;
-import javax.servlet.FilterRegistration;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.Servlet;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
-import javax.servlet.ServletRegistration.Dynamic;
-import javax.servlet.SessionCookieConfig;
-import javax.servlet.SessionTrackingMode;
-import javax.servlet.descriptor.JspConfigDescriptor;
-
-import org.apache.catalina.core.ApplicationFilterRegistration;
-import org.apache.catalina.deploy.FilterDef;
+import java.util.*;
 
 public class TesterServletContext implements ServletContext {
 

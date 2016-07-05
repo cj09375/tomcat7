@@ -16,19 +16,14 @@
  */
 package org.apache.catalina.tribes.group;
 
-import java.util.ArrayList;
-
-import static org.junit.Assert.assertEquals;
-
+import org.apache.catalina.tribes.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import org.apache.catalina.tribes.Channel;
-import org.apache.catalina.tribes.ManagedChannel;
-import org.apache.catalina.tribes.Member;
-import org.apache.catalina.tribes.MembershipListener;
-import org.apache.catalina.tribes.TesterUtil;
+import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
 
 public class TestGroupChannelMemberArrival {
     private static int count = 10;

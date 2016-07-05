@@ -16,10 +16,10 @@
  */
 package org.apache.tomcat.jdbc.test;
 
-import java.sql.Connection;
-
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.sql.Connection;
 
 public class TwoDataSources extends DefaultTestCase {
 

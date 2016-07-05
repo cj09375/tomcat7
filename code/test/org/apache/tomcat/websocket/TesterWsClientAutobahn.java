@@ -16,20 +16,13 @@
  */
 package org.apache.tomcat.websocket;
 
+import org.apache.tomcat.util.ExceptionUtils;
+
+import javax.websocket.*;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.ByteBuffer;
 import java.util.concurrent.CountDownLatch;
-
-import javax.websocket.ClientEndpoint;
-import javax.websocket.ContainerProvider;
-import javax.websocket.OnClose;
-import javax.websocket.OnError;
-import javax.websocket.OnMessage;
-import javax.websocket.Session;
-import javax.websocket.WebSocketContainer;
-
-import org.apache.tomcat.util.ExceptionUtils;
 
 /**
  * Runs the Autobahn test suite in client mode for testing the WebSocket client

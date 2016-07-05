@@ -16,11 +16,11 @@
  */
 package org.apache.catalina.tribes.group.interceptors;
 
+import org.junit.Test;
+
 import java.util.Arrays;
 
 import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
 
 public class TestGzipInterceptor {
 

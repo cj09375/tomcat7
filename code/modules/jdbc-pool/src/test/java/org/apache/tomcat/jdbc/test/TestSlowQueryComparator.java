@@ -17,17 +17,16 @@
 
 package org.apache.tomcat.jdbc.test;
 
+import org.apache.tomcat.jdbc.pool.interceptor.SlowQueryReport.QueryStats;
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
-import org.junit.Assert;
-import org.junit.Test;
-
-import org.apache.tomcat.jdbc.pool.interceptor.SlowQueryReport.QueryStats;
 
 public class TestSlowQueryComparator {
 

@@ -16,20 +16,15 @@
  */
 package org.apache.catalina.session;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Map;
-
+import org.apache.catalina.Manager;
+import org.apache.catalina.core.StandardContext;
 import org.junit.Assert;
 import org.junit.Test;
 
-import org.apache.catalina.Manager;
-import org.apache.catalina.core.StandardContext;
+import java.io.*;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TestStandardSession {
 

@@ -16,22 +16,6 @@
  */
 package org.apache.tomcat.websocket.server;
 
-import java.net.URI;
-import java.util.Queue;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
-
-import javax.servlet.ServletContextEvent;
-import javax.websocket.ContainerProvider;
-import javax.websocket.DeploymentException;
-import javax.websocket.Session;
-import javax.websocket.WebSocketContainer;
-import javax.websocket.server.ServerContainer;
-import javax.websocket.server.ServerEndpointConfig;
-
-import org.junit.Assert;
-import org.junit.Test;
-
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleState;
 import org.apache.catalina.servlets.DefaultServlet;
@@ -41,6 +25,20 @@ import org.apache.tomcat.unittest.TesterServletContext;
 import org.apache.tomcat.websocket.TesterEchoServer;
 import org.apache.tomcat.websocket.TesterMessageCountClient.BasicText;
 import org.apache.tomcat.websocket.pojo.TesterUtil.SimpleClient;
+import org.junit.Assert;
+import org.junit.Test;
+
+import javax.servlet.ServletContextEvent;
+import javax.websocket.ContainerProvider;
+import javax.websocket.DeploymentException;
+import javax.websocket.Session;
+import javax.websocket.WebSocketContainer;
+import javax.websocket.server.ServerContainer;
+import javax.websocket.server.ServerEndpointConfig;
+import java.net.URI;
+import java.util.Queue;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 
 public class TestWsServerContainer extends TomcatBaseTest {

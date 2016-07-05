@@ -16,17 +16,16 @@
  */
 package javax.servlet.resources;
 
-import java.io.File;
-
-import org.junit.Assert;
-import org.junit.Test;
-
 import org.apache.catalina.deploy.WebXml;
 import org.apache.catalina.startup.WebRuleSet;
 import org.apache.tomcat.util.descriptor.DigesterFactory;
 import org.apache.tomcat.util.descriptor.XmlErrorHandler;
 import org.apache.tomcat.util.descriptor.XmlIdentifiers;
 import org.apache.tomcat.util.digester.Digester;
+import org.junit.Assert;
+import org.junit.Test;
+
+import java.io.File;
 
 public class TestSchemaValidation {
 

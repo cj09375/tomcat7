@@ -17,17 +17,15 @@
 
 package org.apache.jasper.compiler;
 
-import java.io.File;
-import java.io.IOException;
-
-import javax.servlet.http.HttpServletResponse;
-
-import org.junit.Assert;
-import org.junit.Test;
-
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.startup.TomcatBaseTest;
 import org.apache.tomcat.util.buf.ByteChunk;
+import org.junit.Assert;
+import org.junit.Test;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
 
 public class TestJspDocumentParser extends TomcatBaseTest {
 

@@ -16,23 +16,6 @@
  */
 package org.apache.tomcat.websocket;
 
-import java.io.File;
-import java.net.URI;
-import java.net.URL;
-import java.util.Queue;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
-
-import javax.websocket.ClientEndpointConfig;
-import javax.websocket.ContainerProvider;
-import javax.websocket.MessageHandler;
-import javax.websocket.Session;
-import javax.websocket.WebSocketContainer;
-
-import org.junit.Assert;
-import org.junit.Assume;
-import org.junit.Test;
-
 import org.apache.catalina.Context;
 import org.apache.catalina.servlets.DefaultServlet;
 import org.apache.catalina.startup.Tomcat;
@@ -41,6 +24,17 @@ import org.apache.tomcat.util.net.TesterSupport;
 import org.apache.tomcat.websocket.TesterMessageCountClient.BasicText;
 import org.apache.tomcat.websocket.TesterMessageCountClient.SleepingText;
 import org.apache.tomcat.websocket.TesterMessageCountClient.TesterProgrammaticEndpoint;
+import org.junit.Assert;
+import org.junit.Assume;
+import org.junit.Test;
+
+import javax.websocket.*;
+import java.io.File;
+import java.net.URI;
+import java.net.URL;
+import java.util.Queue;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 public class TestWebSocketFrameClientSSL extends TomcatBaseTest {
 

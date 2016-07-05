@@ -16,21 +16,6 @@
  */
 package org.apache.tomcat.util.http;
 
-import java.io.IOException;
-import java.lang.reflect.Field;
-import java.net.SocketException;
-
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServlet;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
-
 import org.apache.catalina.Context;
 import org.apache.catalina.connector.Request;
 import org.apache.catalina.connector.Response;
@@ -38,6 +23,17 @@ import org.apache.catalina.startup.SimpleHttpClient;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.startup.TomcatBaseTest;
 import org.apache.catalina.valves.TesterAccessLogValve;
+import org.junit.Test;
+
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServlet;
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.net.SocketException;
+
+import static org.junit.Assert.*;
 
 public class TestMimeHeaders extends TomcatBaseTest {
 

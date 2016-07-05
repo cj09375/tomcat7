@@ -16,21 +16,19 @@
  */
 package org.apache.catalina.loader;
 
-import java.io.IOException;
-import java.lang.reflect.Method;
+import org.apache.catalina.Context;
+import org.apache.catalina.startup.Tomcat;
+import org.apache.catalina.startup.TomcatBaseTest;
+import org.apache.tomcat.util.compat.JreCompat;
+import org.junit.Assert;
+import org.junit.Test;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.junit.Assert;
-import org.junit.Test;
-
-import org.apache.catalina.Context;
-import org.apache.catalina.startup.Tomcat;
-import org.apache.catalina.startup.TomcatBaseTest;
-import org.apache.tomcat.util.compat.JreCompat;
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 public class TestParallelWebappClassLoader extends TomcatBaseTest {
 

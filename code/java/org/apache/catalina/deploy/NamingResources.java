@@ -16,6 +16,17 @@
  */
 package org.apache.catalina.deploy;
 
+import org.apache.catalina.*;
+import org.apache.catalina.mbeans.MBeanUtils;
+import org.apache.catalina.util.Introspection;
+import org.apache.catalina.util.LifecycleMBeanBase;
+import org.apache.juli.logging.Log;
+import org.apache.juli.logging.LogFactory;
+import org.apache.naming.ContextBindings;
+import org.apache.tomcat.util.ExceptionUtils;
+import org.apache.tomcat.util.res.StringManager;
+
+import javax.naming.NamingException;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
@@ -26,26 +37,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.naming.NamingException;
-
-import org.apache.catalina.Container;
-import org.apache.catalina.Context;
-import org.apache.catalina.Engine;
-import org.apache.catalina.LifecycleException;
-import org.apache.catalina.LifecycleState;
-import org.apache.catalina.Server;
-import org.apache.catalina.mbeans.MBeanUtils;
-import org.apache.catalina.util.Introspection;
-import org.apache.catalina.util.LifecycleMBeanBase;
-import org.apache.juli.logging.Log;
-import org.apache.juli.logging.LogFactory;
-import org.apache.naming.ContextBindings;
-import org.apache.tomcat.util.ExceptionUtils;
-import org.apache.tomcat.util.res.StringManager;
-
 
 /**
- * Holds and manages the naming resources defined in the J2EE Enterprise 
+ * Holds and manages the naming resources defined in the J2EE Enterprise
  * Naming Context and their associated JNDI context.
  *
  * @author Remy Maucherat
@@ -53,11 +47,11 @@ import org.apache.tomcat.util.res.StringManager;
 public class NamingResources extends LifecycleMBeanBase implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     private static final Log log = LogFactory.getLog(NamingResources.class);
-    
+
     private static final StringManager sm =
-        StringManager.getManager(Constants.Package);
+            StringManager.getManager(Constants.Package);
 
     private volatile boolean resourceRequireExplicitRegistration = false;
 
@@ -91,14 +85,14 @@ public class NamingResources extends LifecycleMBeanBase implements Serializable 
      * The EJB resource references for this web application, keyed by name.
      */
     private HashMap<String, ContextEjb> ejbs =
-        new HashMap<String, ContextEjb>();
+            new HashMap<String, ContextEjb>();
 
 
     /**
      * The environment entries for this web application, keyed by name.
      */
     private HashMap<String, ContextEnvironment> envs =
-        new HashMap<String, ContextEnvironment>();
+            new HashMap<String, ContextEnvironment>();
 
 
     /**
@@ -106,7 +100,7 @@ public class NamingResources extends LifecycleMBeanBase implements Serializable 
      * name.
      */
     private HashMap<String, ContextLocalEjb> localEjbs =
-        new HashMap<String, ContextLocalEjb>();
+            new HashMap<String, ContextLocalEjb>();
 
 
     /**
@@ -114,7 +108,7 @@ public class NamingResources extends LifecycleMBeanBase implements Serializable 
      * keyed by name.
      */
     private HashMap<String, MessageDestinationRef> mdrs =
-        new HashMap<String, MessageDestinationRef>();
+            new HashMap<String, MessageDestinationRef>();
 
 
     /**
@@ -122,28 +116,28 @@ public class NamingResources extends LifecycleMBeanBase implements Serializable 
      * keyed by name.
      */
     private HashMap<String, ContextResourceEnvRef> resourceEnvRefs =
-        new HashMap<String, ContextResourceEnvRef>();
+            new HashMap<String, ContextResourceEnvRef>();
 
 
     /**
      * The resource references for this web application, keyed by name.
      */
     private HashMap<String, ContextResource> resources =
-        new HashMap<String, ContextResource>();
+            new HashMap<String, ContextResource>();
 
 
     /**
      * The resource links for this web application, keyed by name.
      */
     private HashMap<String, ContextResourceLink> resourceLinks =
-        new HashMap<String, ContextResourceLink>();
+            new HashMap<String, ContextResourceLink>();
 
 
     /**
      * The web service references for this web application, keyed by name.
      */
     private HashMap<String, ContextService> services =
-        new HashMap<String, ContextService>();
+            new HashMap<String, ContextService>();
 
 
     /**
@@ -176,14 +170,14 @@ public class NamingResources extends LifecycleMBeanBase implements Serializable 
         this.container = container;
     }
 
-    
+
     /**
      * Set the transaction object.
      */
     public void setTransaction(ContextTransaction transaction) {
         this.transaction = transaction;
     }
-    
+
 
     /**
      * Get the transaction object.
@@ -191,7 +185,7 @@ public class NamingResources extends LifecycleMBeanBase implements Serializable 
     public ContextTransaction getTransaction() {
         return transaction;
     }
-    
+
 
     /**
      * Add an EJB resource reference for this web application.
@@ -246,7 +240,7 @@ public class NamingResources extends LifecycleMBeanBase implements Serializable 
                 return;
             }
         }
-        
+
         if (!checkResourceType(environment)) {
             throw new IllegalArgumentException(sm.getString(
                     "namingResources.resourceTypeFail", environment.getName(),
@@ -281,7 +275,7 @@ public class NamingResources extends LifecycleMBeanBase implements Serializable 
         if (container instanceof Context) {
             // Could do this in one go. Lots of casts so split out for clarity
             Engine engine =
-                (Engine) ((Context) container).getParent().getParent();
+                    (Engine) ((Context) container).getParent().getParent();
             return engine.getService().getServer();
         }
         return null;
@@ -454,13 +448,13 @@ public class NamingResources extends LifecycleMBeanBase implements Serializable 
         } else {
             entries.add(service.getName());
         }
-        
+
         synchronized (services) {
             service.setNamingResources(this);
             services.put(service.getName(), service);
         }
         support.firePropertyChange("service", null, service);
-        
+
     }
 
 
@@ -575,7 +569,7 @@ public class NamingResources extends LifecycleMBeanBase implements Serializable 
 
         synchronized (mdrs) {
             MessageDestinationRef results[] =
-                new MessageDestinationRef[mdrs.size()];
+                    new MessageDestinationRef[mdrs.size()];
             return mdrs.values().toArray(results);
         }
 
@@ -619,8 +613,8 @@ public class NamingResources extends LifecycleMBeanBase implements Serializable 
     public ContextResourceLink[] findResourceLinks() {
 
         synchronized (resourceLinks) {
-            ContextResourceLink results[] = 
-                new ContextResourceLink[resourceLinks.size()];
+            ContextResourceLink results[] =
+                    new ContextResourceLink[resourceLinks.size()];
             return resourceLinks.values().toArray(results);
         }
 
@@ -691,12 +685,12 @@ public class NamingResources extends LifecycleMBeanBase implements Serializable 
      * none have been defined, a zero-length array is returned.
      */
     public ContextService[] findServices() {
-        
+
         synchronized (services) {
             ContextService results[] = new ContextService[services.size()];
             return services.values().toArray(results);
         }
-        
+
     }
 
 
@@ -797,7 +791,7 @@ public class NamingResources extends LifecycleMBeanBase implements Serializable 
         }
         if (mdr != null) {
             support.firePropertyChange("messageDestinationRef",
-                                       mdr, null);
+                    mdr, null);
             mdr.setNamingResources(null);
         }
 
@@ -857,7 +851,7 @@ public class NamingResources extends LifecycleMBeanBase implements Serializable 
         ContextResourceEnvRef resourceEnvRef = null;
         synchronized (resourceEnvRefs) {
             resourceEnvRef =
-                resourceEnvRefs.remove(name);
+                    resourceEnvRefs.remove(name);
         }
         if (resourceEnvRef != null) {
             support.firePropertyChange("resourceEnvRef", resourceEnvRef, null);
@@ -902,9 +896,9 @@ public class NamingResources extends LifecycleMBeanBase implements Serializable 
      * @param name Name of the web service reference to remove
      */
     public void removeService(String name) {
-        
+
         entries.remove(name);
-        
+
         ContextService service = null;
         synchronized (services) {
             service = services.remove(name);
@@ -913,44 +907,41 @@ public class NamingResources extends LifecycleMBeanBase implements Serializable 
             support.firePropertyChange("service", service, null);
             service.setNamingResources(null);
         }
-        
+
     }
 
 
     // ------------------------------------------------------- Lifecycle methods
-    
+
     @Override
     protected void initInternal() throws LifecycleException {
         super.initInternal();
-        
+
         // Set this before we register currently known naming resources to avoid
         // timing issues. Duplication registration is not an issue.
         resourceRequireExplicitRegistration = true;
-        
+
         for (ContextResource cr : resources.values()) {
             try {
                 MBeanUtils.createMBean(cr);
             } catch (Exception e) {
-                log.warn(sm.getString(
-                        "namingResources.mbeanCreateFail", cr.getName()), e);
+                log.warn(sm.getString("namingResources.mbeanCreateFail", cr.getName()), e);
             }
         }
-        
+
         for (ContextEnvironment ce : envs.values()) {
             try {
                 MBeanUtils.createMBean(ce);
             } catch (Exception e) {
-                log.warn(sm.getString(
-                        "namingResources.mbeanCreateFail", ce.getName()), e);
+                log.warn(sm.getString("namingResources.mbeanCreateFail", ce.getName()), e);
             }
         }
-        
+
         for (ContextResourceLink crl : resourceLinks.values()) {
             try {
                 MBeanUtils.createMBean(crl);
             } catch (Exception e) {
-                log.warn(sm.getString(
-                        "namingResources.mbeanCreateFail", crl.getName()), e);
+                log.warn(sm.getString("namingResources.mbeanCreateFail", crl.getName()), e);
             }
         }
     }
@@ -990,14 +981,14 @@ public class NamingResources extends LifecycleMBeanBase implements Serializable 
                     container), e);
             return;
         }
-        for (ContextResource cr: resources.values()) {
+        for (ContextResource cr : resources.values()) {
             if (cr.getSingleton()) {
-                String closeMethod = cr.getCloseMethod(); 
+                String closeMethod = cr.getCloseMethod();
                 if (closeMethod != null && closeMethod.length() > 0) {
                     String name = cr.getName();
                     Object resource;
                     try {
-                         resource = ctxt.lookup(name);
+                        resource = ctxt.lookup(name);
                     } catch (NamingException e) {
                         log.warn(sm.getString(
                                 "namingResources.cleanupNoResource",
@@ -1010,14 +1001,14 @@ public class NamingResources extends LifecycleMBeanBase implements Serializable 
         }
     }
 
-    
+
     /**
      * Clean up a resource by calling the defined close method. For example,
      * closing a database connection pool will close it's open connections. This
      * will happen on GC but that leaves db connections open that may cause
      * issues.
-     * 
-     * @param resource  The resource to close.
+     *
+     * @param resource The resource to close.
      */
     private void cleanUp(Object resource, String name, String closeMethod) {
         // Look for a zero-arg close() method
@@ -1065,7 +1056,7 @@ public class NamingResources extends LifecycleMBeanBase implements Serializable 
                         "namingResources.mbeanDestroyFail", crl.getName()), e);
             }
         }
-        
+
         for (ContextEnvironment ce : envs.values()) {
             try {
                 MBeanUtils.destroyMBean(ce);
@@ -1074,7 +1065,7 @@ public class NamingResources extends LifecycleMBeanBase implements Serializable 
                         "namingResources.mbeanDestroyFail", ce.getName()), e);
             }
         }
-        
+
         for (ContextResource cr : resources.values()) {
             try {
                 MBeanUtils.destroyMBean(cr);
@@ -1083,7 +1074,7 @@ public class NamingResources extends LifecycleMBeanBase implements Serializable 
                         "namingResources.mbeanDestroyFail", cr.getName()), e);
             }
         }
-        
+
         super.destroyInternal();
     }
 
@@ -1092,7 +1083,7 @@ public class NamingResources extends LifecycleMBeanBase implements Serializable 
     protected String getDomainInternal() {
         // Use the same domain as our associated container if we have one
         Object c = getContainer();
-        
+
         if (c instanceof LifecycleMBeanBase) {
             return ((LifecycleMBeanBase) c).getDomain();
         }
@@ -1117,12 +1108,11 @@ public class NamingResources extends LifecycleMBeanBase implements Serializable 
      * consistent with any injection targets and if the type is not specified,
      * tries to configure the type based on the injection targets
      *
-     * @param resource  The resource to check
-     *
-     * @return  <code>true</code> if the type for the resource is now valid (if
-     *          previously <code>null</code> this means it is now set) or
-     *          <code>false</code> if the current resource type is inconsistent
-     *          with the injection targets and/or cannot be determined
+     * @param resource The resource to check
+     * @return <code>true</code> if the type for the resource is now valid (if
+     * previously <code>null</code> this means it is now set) or
+     * <code>false</code> if the current resource type is inconsistent
+     * with the injection targets and/or cannot be determined
      */
     private boolean checkResourceType(ResourceBase resource) {
         if (!(container instanceof Context)) {
@@ -1162,7 +1152,7 @@ public class NamingResources extends LifecycleMBeanBase implements Serializable 
     }
 
     private Class<?> getCompatibleType(Context context,
-            ResourceBase resource, Class<?> typeClass) {
+                                       ResourceBase resource, Class<?> typeClass) {
 
         Class<?> result = null;
 
@@ -1180,7 +1170,7 @@ public class NamingResources extends LifecycleMBeanBase implements Serializable 
             Class<?> targetType = getSetterType(clazz, targetName);
             if (targetType == null) {
                 // Try a field match if no setter match
-                targetType = getFieldType(clazz,targetName);
+                targetType = getFieldType(clazz, targetName);
             }
             if (targetType == null) {
                 // No match - ignore this injection target

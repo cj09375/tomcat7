@@ -16,14 +16,14 @@
  */
 package org.apache.juli;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.io.File;
 import java.util.Collections;
 import java.util.Random;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
-
-import org.junit.Assert;
-import org.junit.Test;
 
 /**
  * Test cases for {@link ClassLoaderLogManager}.

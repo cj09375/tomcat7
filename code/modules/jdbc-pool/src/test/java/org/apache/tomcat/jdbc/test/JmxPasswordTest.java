@@ -16,22 +16,20 @@
  */
 package org.apache.tomcat.jdbc.test;
 
-import java.lang.management.ManagementFactory;
-import java.util.Hashtable;
-import java.util.Properties;
-
-import javax.management.JMX;
-import javax.management.MBeanServer;
-import javax.management.ObjectName;
-
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
 import org.apache.tomcat.jdbc.pool.ConnectionPool;
 import org.apache.tomcat.jdbc.pool.PoolUtilities;
 import org.apache.tomcat.jdbc.pool.jmx.ConnectionPoolMBean;
 import org.apache.tomcat.jdbc.test.driver.Driver;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+import javax.management.JMX;
+import javax.management.MBeanServer;
+import javax.management.ObjectName;
+import java.lang.management.ManagementFactory;
+import java.util.Hashtable;
+import java.util.Properties;
 
 public class JmxPasswordTest extends DefaultTestCase{
     public static final String password = "password";

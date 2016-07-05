@@ -16,9 +16,9 @@
  */
 package org.apache.tomcat.util.http;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class TestRequestUtil {
 

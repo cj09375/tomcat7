@@ -16,14 +16,14 @@
  */
 package org.apache.catalina.startup;
 
+import org.apache.catalina.realm.GenericPrincipal;
+import org.apache.catalina.realm.RealmBase;
+
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.apache.catalina.realm.GenericPrincipal;
-import org.apache.catalina.realm.RealmBase;
 
 /**
  * Simple Realm that uses a configurable {@link Map} to link user names and

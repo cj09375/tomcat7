@@ -16,14 +16,14 @@
  */
 package org.apache.juli;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
-
-import org.junit.Assert;
-import org.junit.Test;
 
 public class TestDateFormatCache {
 

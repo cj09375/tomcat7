@@ -16,9 +16,9 @@
  */
 package org.apache.tomcat.unittest;
 
-import java.io.IOException;
-
 import org.apache.catalina.connector.Response;
+
+import java.io.IOException;
 
 /**
  * Minimal changes to Response to enable tests that use this class to operate

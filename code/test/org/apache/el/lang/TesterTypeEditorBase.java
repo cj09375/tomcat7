@@ -16,9 +16,7 @@
  */
 package org.apache.el.lang;
 
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyEditor;
 

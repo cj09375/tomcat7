@@ -16,8 +16,13 @@
  */
 package org.apache.jasper.runtime;
 
-import java.io.File;
-import java.io.IOException;
+import org.apache.catalina.Context;
+import org.apache.catalina.startup.Tomcat;
+import org.apache.catalina.startup.TomcatBaseTest;
+import org.apache.jasper.Constants;
+import org.apache.tomcat.util.buf.ByteChunk;
+import org.junit.Assert;
+import org.junit.Test;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,16 +31,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.JspFactory;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.PageContext;
-
-import org.junit.Assert;
-
-import org.junit.Test;
-
-import org.apache.catalina.Context;
-import org.apache.catalina.startup.Tomcat;
-import org.apache.catalina.startup.TomcatBaseTest;
-import org.apache.jasper.Constants;
-import org.apache.tomcat.util.buf.ByteChunk;
+import java.io.File;
+import java.io.IOException;
 
 public class TestPageContextImpl extends TomcatBaseTest {
 

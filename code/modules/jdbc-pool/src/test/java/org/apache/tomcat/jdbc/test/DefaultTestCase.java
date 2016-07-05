@@ -16,16 +16,15 @@
  */
 package org.apache.tomcat.jdbc.test;
 
-import java.lang.reflect.Method;
-import java.util.Properties;
-
-import org.junit.After;
-import org.junit.Before;
-
 import org.apache.tomcat.dbcp.dbcp.BasicDataSource;
 import org.apache.tomcat.dbcp.dbcp.BasicDataSourceFactory;
 import org.apache.tomcat.jdbc.pool.PoolConfiguration;
 import org.apache.tomcat.jdbc.pool.PoolProperties;
+import org.junit.After;
+import org.junit.Before;
+
+import java.lang.reflect.Method;
+import java.util.Properties;
 
 //import com.mchange.v2.c3p0.ComboPooledDataSource;
 //import com.mchange.v2.log.MLevel;

@@ -16,11 +16,11 @@
  */
 package org.apache.tomcat.util.http.parser;
 
-import java.io.StringReader;
-import java.util.Map;
-
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.io.StringReader;
+import java.util.Map;
 
 public class TestAuthorizationDigest {
 

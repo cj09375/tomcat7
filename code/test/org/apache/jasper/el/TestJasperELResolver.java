@@ -16,15 +16,14 @@
  */
 package org.apache.jasper.el;
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
+import org.junit.Assert;
+import org.junit.Test;
 
 import javax.el.ELResolver;
 import javax.servlet.jsp.el.ImplicitObjectELResolver;
-
-import org.junit.Assert;
-import org.junit.Test;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TestJasperELResolver {
 

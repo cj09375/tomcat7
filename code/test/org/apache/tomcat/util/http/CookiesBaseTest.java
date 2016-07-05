@@ -17,16 +17,15 @@
 
 package org.apache.tomcat.util.http;
 
-import java.io.IOException;
+import org.apache.catalina.Context;
+import org.apache.catalina.startup.Tomcat;
+import org.apache.catalina.startup.TomcatBaseTest;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.catalina.Context;
-import org.apache.catalina.startup.Tomcat;
-import org.apache.catalina.startup.TomcatBaseTest;
+import java.io.IOException;
 
 /**
  * Base Test case for {@link Cookies}. <b>Note</b> because of the use of

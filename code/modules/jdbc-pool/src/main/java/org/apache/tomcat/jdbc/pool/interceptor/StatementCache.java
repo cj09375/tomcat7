@@ -15,6 +15,10 @@
  */
 package org.apache.tomcat.jdbc.pool.interceptor;
 
+import org.apache.tomcat.jdbc.pool.ConnectionPool;
+import org.apache.tomcat.jdbc.pool.PoolProperties.InterceptorProperty;
+import org.apache.tomcat.jdbc.pool.PooledConnection;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -22,10 +26,6 @@ import java.sql.Statement;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import org.apache.tomcat.jdbc.pool.ConnectionPool;
-import org.apache.tomcat.jdbc.pool.PoolProperties.InterceptorProperty;
-import org.apache.tomcat.jdbc.pool.PooledConnection;
 
 /**
  * Interceptor that caches {@code PreparedStatement} and/or

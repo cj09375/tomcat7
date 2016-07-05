@@ -17,27 +17,19 @@
 
 package org.apache.tomcat.util.net;
 
-import java.io.File;
-import java.net.InetAddress;
-import java.net.ServerSocket;
-
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
-
 import org.apache.catalina.connector.Connector;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.startup.TomcatBaseTest;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
-import org.apache.tomcat.jni.Address;
-import org.apache.tomcat.jni.Error;
-import org.apache.tomcat.jni.Library;
-import org.apache.tomcat.jni.OS;
-import org.apache.tomcat.jni.Pool;
-import org.apache.tomcat.jni.Socket;
+import org.apache.tomcat.jni.*;
+import org.junit.Test;
+
+import java.io.File;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+
+import static org.junit.Assert.*;
 
 /**
  * Test case for the Endpoint implementations. The testing framework will ensure

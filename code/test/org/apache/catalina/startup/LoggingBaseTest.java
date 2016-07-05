@@ -16,19 +16,18 @@
  */
 package org.apache.catalina.startup;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.Assert.fail;
-
+import org.apache.juli.logging.Log;
+import org.apache.juli.logging.LogFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TestName;
 
-import org.apache.juli.logging.Log;
-import org.apache.juli.logging.LogFactory;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.fail;
 
 /**
  * Base class that provides logging support for test cases that respects the

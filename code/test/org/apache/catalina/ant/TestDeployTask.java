@@ -16,17 +16,16 @@
  */
 package org.apache.catalina.ant;
 
+import org.apache.catalina.startup.Tomcat;
+import org.apache.catalina.startup.TomcatBaseTest;
+import org.apache.tools.ant.BuildException;
+import org.junit.Test;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
 import static org.junit.Assert.assertEquals;
-
-import org.junit.Test;
-
-import org.apache.catalina.startup.Tomcat;
-import org.apache.catalina.startup.TomcatBaseTest;
-import org.apache.tools.ant.BuildException;
 
 public class TestDeployTask extends TomcatBaseTest {
 

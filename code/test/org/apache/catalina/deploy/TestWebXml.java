@@ -16,23 +16,22 @@
  */
 package org.apache.catalina.deploy;
 
+import org.apache.catalina.startup.WebRuleSet;
+import org.apache.tomcat.util.descriptor.DigesterFactory;
+import org.apache.tomcat.util.descriptor.XmlErrorHandler;
+import org.apache.tomcat.util.descriptor.XmlIdentifiers;
+import org.apache.tomcat.util.digester.Digester;
+import org.junit.Assert;
+import org.junit.Test;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
-import org.junit.Assert;
-import org.junit.Test;
-
-import org.apache.catalina.startup.WebRuleSet;
-import org.apache.tomcat.util.descriptor.DigesterFactory;
-import org.apache.tomcat.util.descriptor.XmlErrorHandler;
-import org.apache.tomcat.util.descriptor.XmlIdentifiers;
-import org.apache.tomcat.util.digester.Digester;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
 
 /**
  * Test case for {@link WebXml}.

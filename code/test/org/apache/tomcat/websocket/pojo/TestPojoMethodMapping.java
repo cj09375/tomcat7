@@ -16,22 +16,6 @@
  */
 package org.apache.tomcat.websocket.pojo;
 
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.websocket.ContainerProvider;
-import javax.websocket.OnClose;
-import javax.websocket.OnMessage;
-import javax.websocket.OnOpen;
-import javax.websocket.Session;
-import javax.websocket.WebSocketContainer;
-import javax.websocket.server.PathParam;
-import javax.websocket.server.ServerEndpoint;
-
-import org.junit.Assert;
-import org.junit.Test;
-
 import org.apache.catalina.Context;
 import org.apache.catalina.servlets.DefaultServlet;
 import org.apache.catalina.startup.Tomcat;
@@ -39,6 +23,15 @@ import org.apache.catalina.startup.TomcatBaseTest;
 import org.apache.tomcat.websocket.pojo.TesterUtil.ServerConfigListener;
 import org.apache.tomcat.websocket.pojo.TesterUtil.SimpleClient;
 import org.apache.tomcat.websocket.pojo.TesterUtil.SingletonConfigurator;
+import org.junit.Assert;
+import org.junit.Test;
+
+import javax.websocket.*;
+import javax.websocket.server.PathParam;
+import javax.websocket.server.ServerEndpoint;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TestPojoMethodMapping extends TomcatBaseTest {
 

@@ -17,23 +17,14 @@
 
 package org.apache.catalina.ha.session;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import org.apache.catalina.realm.GenericPrincipal;
+import org.junit.Test;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotSame;
-import static org.junit.Assert.fail;
-
-import org.junit.Test;
-
-import org.apache.catalina.realm.GenericPrincipal;
+import static org.junit.Assert.*;
 
 
 public class TestSerializablePrincipal  {

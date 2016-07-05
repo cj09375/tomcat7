@@ -16,18 +16,6 @@
  */
 package org.apache.tomcat.util.net;
 
-import java.io.File;
-import java.net.SocketException;
-
-import javax.net.ssl.SSLException;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
-import org.junit.Assume;
-import org.junit.Test;
-
 import org.apache.catalina.connector.Connector;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.startup.TomcatBaseTest;
@@ -35,6 +23,14 @@ import org.apache.coyote.ProtocolHandler;
 import org.apache.coyote.http11.AbstractHttp11JsseProtocol;
 import org.apache.tomcat.util.buf.ByteChunk;
 import org.apache.tomcat.util.net.jsse.TesterBug50640SslImpl;
+import org.junit.Assume;
+import org.junit.Test;
+
+import javax.net.ssl.SSLException;
+import java.io.File;
+import java.net.SocketException;
+
+import static org.junit.Assert.*;
 
 /**
  * The keys and certificates used in this file are all available in svn and were

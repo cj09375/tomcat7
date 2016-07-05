@@ -16,16 +16,15 @@
  */
 package javax.el;
 
+import org.apache.jasper.el.ELContextImpl;
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.beans.FeatureDescriptor;
 import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.ListResourceBundle;
 import java.util.ResourceBundle;
-
-import org.junit.Assert;
-import org.junit.Test;
-
-import org.apache.jasper.el.ELContextImpl;
 
 public class TestResourceBundleELResolver {
 

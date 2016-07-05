@@ -16,6 +16,24 @@
  */
 package org.apache.tomcat.websocket;
 
+import org.apache.catalina.Context;
+import org.apache.catalina.servlets.DefaultServlet;
+import org.apache.catalina.startup.Tomcat;
+import org.apache.catalina.startup.TomcatBaseTest;
+import org.apache.coyote.http11.Http11Protocol;
+import org.apache.tomcat.util.net.TesterSupport;
+import org.apache.tomcat.websocket.TesterMessageCountClient.*;
+import org.apache.tomcat.websocket.server.Constants;
+import org.apache.tomcat.websocket.server.WsContextListener;
+import org.junit.Assert;
+import org.junit.Assume;
+import org.junit.Test;
+
+import javax.servlet.ServletContextEvent;
+import javax.websocket.*;
+import javax.websocket.server.ServerContainer;
+import javax.websocket.server.ServerEndpoint;
+import javax.websocket.server.ServerEndpointConfig;
 import java.io.File;
 import java.io.IOException;
 import java.net.SocketTimeoutException;
@@ -30,39 +48,6 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
-
-import javax.servlet.ServletContextEvent;
-import javax.websocket.ClientEndpointConfig;
-import javax.websocket.ContainerProvider;
-import javax.websocket.DeploymentException;
-import javax.websocket.Endpoint;
-import javax.websocket.EndpointConfig;
-import javax.websocket.Extension;
-import javax.websocket.MessageHandler;
-import javax.websocket.OnMessage;
-import javax.websocket.Session;
-import javax.websocket.WebSocketContainer;
-import javax.websocket.server.ServerContainer;
-import javax.websocket.server.ServerEndpoint;
-import javax.websocket.server.ServerEndpointConfig;
-
-import org.junit.Assert;
-import org.junit.Assume;
-import org.junit.Test;
-
-import org.apache.catalina.Context;
-import org.apache.catalina.servlets.DefaultServlet;
-import org.apache.catalina.startup.Tomcat;
-import org.apache.catalina.startup.TomcatBaseTest;
-import org.apache.coyote.http11.Http11Protocol;
-import org.apache.tomcat.util.net.TesterSupport;
-import org.apache.tomcat.websocket.TesterMessageCountClient.BasicBinary;
-import org.apache.tomcat.websocket.TesterMessageCountClient.BasicHandler;
-import org.apache.tomcat.websocket.TesterMessageCountClient.BasicText;
-import org.apache.tomcat.websocket.TesterMessageCountClient.TesterEndpoint;
-import org.apache.tomcat.websocket.TesterMessageCountClient.TesterProgrammaticEndpoint;
-import org.apache.tomcat.websocket.server.Constants;
-import org.apache.tomcat.websocket.server.WsContextListener;
 
 public class TestWsWebSocketContainer extends TomcatBaseTest {
 

@@ -16,14 +16,13 @@
  */
 package javax.el;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
+import org.apache.jasper.el.ELContextImpl;
 import org.junit.Assert;
 import org.junit.Test;
 
-import org.apache.jasper.el.ELContextImpl;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class TestListELResolver {
 

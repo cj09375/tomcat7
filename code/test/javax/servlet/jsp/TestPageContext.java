@@ -17,15 +17,14 @@
 
 package javax.servlet.jsp;
 
-import java.io.File;
-
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
-
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.startup.TomcatBaseTest;
 import org.apache.tomcat.util.buf.ByteChunk;
+import org.junit.Test;
+
+import java.io.File;
+
+import static org.junit.Assert.assertTrue;
 
 public class TestPageContext extends TomcatBaseTest {
 

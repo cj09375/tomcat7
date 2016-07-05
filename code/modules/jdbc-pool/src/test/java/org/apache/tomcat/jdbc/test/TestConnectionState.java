@@ -16,13 +16,12 @@
  */
 package org.apache.tomcat.jdbc.test;
 
-import java.sql.Connection;
-
+import org.apache.tomcat.jdbc.pool.DataSourceProxy;
+import org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;
 import org.junit.Assert;
 import org.junit.Test;
 
-import org.apache.tomcat.jdbc.pool.DataSourceProxy;
-import org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;
+import java.sql.Connection;
 
 public class TestConnectionState extends DefaultTestCase {
 
