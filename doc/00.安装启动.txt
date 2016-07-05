@@ -1,0 +1,5 @@
+1. 启动类：org.apache.catalina.startup.Bootstrap
+2.JDK 1.7
+3.JVM options :
+    -Dcatalina.home=launch -Dcatalina.base=launch -Djava.endorsed.dirs=launch/endorsed -Djava.io.tmpdir=launch/temp -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djava.util.logging.config.file=launch/conf/logging.properties
+4:启动后：http:127.0.0.1:8080/examples
