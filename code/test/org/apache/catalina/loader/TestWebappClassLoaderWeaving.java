@@ -20,7 +20,6 @@ import org.apache.catalina.Context;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.startup.TomcatBaseTest;
 import org.apache.tomcat.util.http.fileupload.FileUtils;
-import org.junit.*;
 
 import java.io.File;
 import java.io.FileOutputStream;

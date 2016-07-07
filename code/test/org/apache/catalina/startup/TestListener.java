@@ -19,7 +19,6 @@ package org.apache.catalina.startup;
 import org.apache.catalina.Context;
 import org.junit.Test;
 
-import javax.servlet.*;
 import java.util.Set;
 
 import static org.junit.Assert.assertFalse;

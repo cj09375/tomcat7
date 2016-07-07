@@ -21,7 +21,6 @@ import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 
 import javax.management.ObjectName;
-import javax.naming.*;
 import javax.naming.spi.ObjectFactory;
 import javax.sql.DataSource;
 import java.sql.Connection;

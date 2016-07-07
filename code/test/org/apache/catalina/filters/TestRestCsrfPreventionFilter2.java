@@ -19,7 +19,6 @@ package org.apache.catalina.filters;
 import org.apache.catalina.Context;
 import org.apache.catalina.authenticator.AuthenticatorBase;
 import org.apache.catalina.authenticator.BasicAuthenticator;
-import org.apache.catalina.deploy.*;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.startup.TomcatBaseTest;
 import org.apache.tomcat.util.buf.B2CConverter;

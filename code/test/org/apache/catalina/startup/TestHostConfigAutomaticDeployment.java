@@ -16,7 +16,6 @@
  */
 package org.apache.catalina.startup;
 
-import org.apache.catalina.*;
 import org.apache.catalina.core.StandardContext;
 import org.apache.catalina.core.StandardHost;
 import org.apache.catalina.util.ContextName;

@@ -19,15 +19,6 @@
 package org.apache.catalina.core;
 
 
-import java.io.IOException;
-
-import javax.servlet.DispatcherType;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.Servlet;
-import javax.servlet.ServletException;
-import javax.servlet.UnavailableException;
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.catalina.Context;
 import org.apache.catalina.Globals;
 import org.apache.catalina.LifecycleException;
@@ -42,6 +33,10 @@ import org.apache.tomcat.util.buf.MessageBytes;
 import org.apache.tomcat.util.log.SystemLogHandler;
 import org.apache.tomcat.util.res.StringManager;
 
+import javax.servlet.*;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
 /**
  * Valve that implements the default basic behavior for the
  * <code>StandardWrapper</code> container implementation.
@@ -49,13 +44,13 @@ import org.apache.tomcat.util.res.StringManager;
  * @author Craig R. McClanahan
  */
 final class StandardWrapperValve
-    extends ValveBase {
+        extends ValveBase {
 
     //------------------------------------------------------ Constructor
     public StandardWrapperValve() {
         super(true);
     }
-    
+
     // ----------------------------------------------------- Instance Variables
 
 
@@ -73,7 +68,7 @@ final class StandardWrapperValve
      * The string manager for this package.
      */
     private static final StringManager sm =
-        StringManager.getManager(Constants.Package);
+            StringManager.getManager(Constants.Package);
 
 
     // --------------------------------------------------------- Public Methods
@@ -83,47 +78,40 @@ final class StandardWrapperValve
      * Invoke the servlet we are managing, respecting the rules regarding
      * servlet lifecycle and SingleThreadModel support.
      *
-     * @param request Request to be processed
+     * @param request  Request to be processed
      * @param response Response to be produced
-     *
-     * @exception IOException if an input/output error occurred
-     * @exception ServletException if a servlet error occurred
+     * @throws IOException      if an input/output error occurred
+     * @throws ServletException if a servlet error occurred
      */
     @Override
     public final void invoke(Request request, Response response)
-        throws IOException, ServletException {
+            throws IOException, ServletException {
 
         // Initialize local variables we may need
         boolean unavailable = false;
         Throwable throwable = null;
         // This should be a Request attribute...
-        long t1=System.currentTimeMillis();
+        long t1 = System.currentTimeMillis();
         requestCount++;
         StandardWrapper wrapper = (StandardWrapper) getContainer();
         Servlet servlet = null;
         Context context = (Context) wrapper.getParent();
-        
+
         // Check for the application being marked unavailable
         if (!context.getState().isAvailable()) {
-            response.sendError(HttpServletResponse.SC_SERVICE_UNAVAILABLE,
-                           sm.getString("standardContext.isUnavailable"));
+            response.sendError(HttpServletResponse.SC_SERVICE_UNAVAILABLE, sm.getString("standardContext.isUnavailable"));
             unavailable = true;
         }
 
         // Check for the servlet being marked unavailable
         if (!unavailable && wrapper.isUnavailable()) {
-            container.getLogger().info(sm.getString("standardWrapper.isUnavailable",
-                    wrapper.getName()));
+            container.getLogger().info(sm.getString("standardWrapper.isUnavailable", wrapper.getName()));
             long available = wrapper.getAvailable();
             if ((available > 0L) && (available < Long.MAX_VALUE)) {
                 response.setDateHeader("Retry-After", available);
-                response.sendError(HttpServletResponse.SC_SERVICE_UNAVAILABLE,
-                        sm.getString("standardWrapper.isUnavailable",
-                                wrapper.getName()));
+                response.sendError(HttpServletResponse.SC_SERVICE_UNAVAILABLE, sm.getString("standardWrapper.isUnavailable", wrapper.getName()));
             } else if (available == Long.MAX_VALUE) {
-                response.sendError(HttpServletResponse.SC_NOT_FOUND,
-                        sm.getString("standardWrapper.notFound",
-                                wrapper.getName()));
+                response.sendError(HttpServletResponse.SC_NOT_FOUND, sm.getString("standardWrapper.notFound", wrapper.getName()));
             }
             unavailable = true;
         }
@@ -134,29 +122,21 @@ final class StandardWrapperValve
                 servlet = wrapper.allocate();
             }
         } catch (UnavailableException e) {
-            container.getLogger().error(
-                    sm.getString("standardWrapper.allocateException",
-                            wrapper.getName()), e);
+            container.getLogger().error(sm.getString("standardWrapper.allocateException", wrapper.getName()), e);
             long available = wrapper.getAvailable();
             if ((available > 0L) && (available < Long.MAX_VALUE)) {
                 response.setDateHeader("Retry-After", available);
-                response.sendError(HttpServletResponse.SC_SERVICE_UNAVAILABLE,
-                           sm.getString("standardWrapper.isUnavailable",
-                                        wrapper.getName()));
+                response.sendError(HttpServletResponse.SC_SERVICE_UNAVAILABLE, sm.getString("standardWrapper.isUnavailable", wrapper.getName()));
             } else if (available == Long.MAX_VALUE) {
-                response.sendError(HttpServletResponse.SC_NOT_FOUND,
-                           sm.getString("standardWrapper.notFound",
-                                        wrapper.getName()));
+                response.sendError(HttpServletResponse.SC_NOT_FOUND, sm.getString("standardWrapper.notFound", wrapper.getName()));
             }
         } catch (ServletException e) {
-            container.getLogger().error(sm.getString("standardWrapper.allocateException",
-                             wrapper.getName()), StandardWrapper.getRootCause(e));
+            container.getLogger().error(sm.getString("standardWrapper.allocateException", wrapper.getName()), StandardWrapper.getRootCause(e));
             throwable = e;
             exception(request, response, e);
         } catch (Throwable e) {
             ExceptionUtils.handleThrowable(e);
-            container.getLogger().error(sm.getString("standardWrapper.allocateException",
-                             wrapper.getName()), e);
+            container.getLogger().error(sm.getString("standardWrapper.allocateException", wrapper.getName()), e);
             throwable = e;
             exception(request, response, e);
             servlet = null;
@@ -164,24 +144,20 @@ final class StandardWrapperValve
 
         // Identify if the request is Comet related now that the servlet has been allocated
         boolean comet = false;
-        if (servlet instanceof CometProcessor && Boolean.TRUE.equals(request.getAttribute(
-                Globals.COMET_SUPPORTED_ATTR))) {
+        if (servlet instanceof CometProcessor && Boolean.TRUE.equals(request.getAttribute(Globals.COMET_SUPPORTED_ATTR))) {
             comet = true;
             request.setComet(true);
         }
-        
+
         MessageBytes requestPathMB = request.getRequestPathMB();
         DispatcherType dispatcherType = DispatcherType.REQUEST;
-        if (request.getDispatcherType()==DispatcherType.ASYNC) dispatcherType = DispatcherType.ASYNC; 
-        request.setAttribute(Globals.DISPATCHER_TYPE_ATTR,dispatcherType);
-        request.setAttribute(Globals.DISPATCHER_REQUEST_PATH_ATTR,
-                requestPathMB);
+        if (request.getDispatcherType() == DispatcherType.ASYNC) dispatcherType = DispatcherType.ASYNC;
+        request.setAttribute(Globals.DISPATCHER_TYPE_ATTR, dispatcherType);
+        request.setAttribute(Globals.DISPATCHER_REQUEST_PATH_ATTR, requestPathMB);
         // Create the filter chain for this request
-        ApplicationFilterFactory factory =
-            ApplicationFilterFactory.getInstance();
-        ApplicationFilterChain filterChain =
-            factory.createFilterChain(request, wrapper, servlet);
-        
+        ApplicationFilterFactory factory = ApplicationFilterFactory.getInstance();
+        ApplicationFilterChain filterChain = factory.createFilterChain(request, wrapper, servlet);
+
         // Reset comet flag value after creating the filter chain
         request.setComet(false);
 
@@ -195,13 +171,12 @@ final class StandardWrapperValve
                         SystemLogHandler.startCapture();
                         if (request.isAsyncDispatching()) {
                             //TODO SERVLET3 - async
-                            ((AsyncContextImpl)request.getAsyncContext()).doInternalDispatch(); 
+                            ((AsyncContextImpl) request.getAsyncContext()).doInternalDispatch();
                         } else if (comet) {
                             filterChain.doFilterEvent(request.getEvent());
                             request.setComet(true);
                         } else {
-                            filterChain.doFilter(request.getRequest(), 
-                                    response.getResponse());
+                            filterChain.doFilter(request.getRequest(), response.getResponse());
                         }
                     } finally {
                         String log = SystemLogHandler.stopCapture();
@@ -212,13 +187,13 @@ final class StandardWrapperValve
                 } else {
                     if (request.isAsyncDispatching()) {
                         //TODO SERVLET3 - async
-                        ((AsyncContextImpl)request.getAsyncContext()).doInternalDispatch();
+                        ((AsyncContextImpl) request.getAsyncContext()).doInternalDispatch();
                     } else if (comet) {
                         request.setComet(true);
                         filterChain.doFilterEvent(request.getEvent());
                     } else {
                         filterChain.doFilter
-                            (request.getRequest(), response.getResponse());
+                                (request.getRequest(), response.getResponse());
                     }
                 }
 
@@ -243,12 +218,12 @@ final class StandardWrapperValve
             if ((available > 0L) && (available < Long.MAX_VALUE)) {
                 response.setDateHeader("Retry-After", available);
                 response.sendError(HttpServletResponse.SC_SERVICE_UNAVAILABLE,
-                           sm.getString("standardWrapper.isUnavailable",
-                                        wrapper.getName()));
+                        sm.getString("standardWrapper.isUnavailable",
+                                wrapper.getName()));
             } else if (available == Long.MAX_VALUE) {
                 response.sendError(HttpServletResponse.SC_NOT_FOUND,
-                            sm.getString("standardWrapper.notFound",
-                                        wrapper.getName()));
+                        sm.getString("standardWrapper.notFound",
+                                wrapper.getName()));
             }
             // Do not save exception in 'throwable', because we
             // do not want to do exception(request, response, e) processing
@@ -290,7 +265,7 @@ final class StandardWrapperValve
         } catch (Throwable e) {
             ExceptionUtils.handleThrowable(e);
             container.getLogger().error(sm.getString("standardWrapper.deallocateException",
-                             wrapper.getName()), e);
+                    wrapper.getName()), e);
             if (throwable == null) {
                 throwable = e;
                 exception(request, response, e);
@@ -301,24 +276,24 @@ final class StandardWrapperValve
         // unload it and release this instance
         try {
             if ((servlet != null) &&
-                (wrapper.getAvailable() == Long.MAX_VALUE)) {
+                    (wrapper.getAvailable() == Long.MAX_VALUE)) {
                 wrapper.unload();
             }
         } catch (Throwable e) {
             ExceptionUtils.handleThrowable(e);
             container.getLogger().error(sm.getString("standardWrapper.unloadException",
-                             wrapper.getName()), e);
+                    wrapper.getName()), e);
             if (throwable == null) {
                 throwable = e;
                 exception(request, response, e);
             }
         }
-        long t2=System.currentTimeMillis();
+        long t2 = System.currentTimeMillis();
 
-        long time=t2-t1;
+        long time = t2 - t1;
         processingTime += time;
-        if( time > maxTime) maxTime=time;
-        if( time < minTime) minTime=time;
+        if (time > maxTime) maxTime = time;
+        if (time < minTime) minTime = time;
 
     }
 
@@ -326,26 +301,25 @@ final class StandardWrapperValve
     /**
      * Process a Comet event. The main differences here are to not use sendError
      * (the response is committed), to avoid creating a new filter chain
-     * (which would work but be pointless), and a few very minor tweaks. 
+     * (which would work but be pointless), and a few very minor tweaks.
      *
-     * @param request The servlet request to be processed
+     * @param request  The servlet request to be processed
      * @param response The servlet response to be created
-     *
-     * @exception IOException if an input/output error occurs, or is thrown
-     *  by a subsequently invoked Valve, Filter, or Servlet
-     * @exception ServletException if a servlet error occurs, or is thrown
-     *  by a subsequently invoked Valve, Filter, or Servlet
+     * @throws IOException      if an input/output error occurs, or is thrown
+     *                          by a subsequently invoked Valve, Filter, or Servlet
+     * @throws ServletException if a servlet error occurs, or is thrown
+     *                          by a subsequently invoked Valve, Filter, or Servlet
      */
     @Override
     public void event(Request request, Response response, CometEvent event)
-        throws IOException, ServletException {
-        
+            throws IOException, ServletException {
+
         // Initialize local variables we may need
         Throwable throwable = null;
         // This should be a Request attribute...
-        long t1=System.currentTimeMillis();
+        long t1 = System.currentTimeMillis();
         // FIXME: Add a flag to count the total amount of events processed ? requestCount++;
-        
+
         StandardWrapper wrapper = (StandardWrapper) getContainer();
         if (wrapper == null) {
             // Context has been shutdown. Nothing to do here.
@@ -358,7 +332,7 @@ final class StandardWrapperValve
         // Check for the application being marked unavailable
         boolean unavailable = !context.getState().isAvailable() ||
                 wrapper.isUnavailable();
-        
+
         // Allocate a servlet instance to process this request
         try {
             if (!unavailable) {
@@ -368,13 +342,13 @@ final class StandardWrapperValve
             // The response is already committed, so it's not possible to do anything
         } catch (ServletException e) {
             container.getLogger().error(sm.getString("standardWrapper.allocateException",
-                             wrapper.getName()), StandardWrapper.getRootCause(e));
+                    wrapper.getName()), StandardWrapper.getRootCause(e));
             throwable = e;
             exception(request, response, e);
         } catch (Throwable e) {
             ExceptionUtils.handleThrowable(e);
             container.getLogger().error(sm.getString("standardWrapper.allocateException",
-                             wrapper.getName()), e);
+                    wrapper.getName()), e);
             throwable = e;
             exception(request, response, e);
             servlet = null;
@@ -386,8 +360,8 @@ final class StandardWrapperValve
         request.setAttribute(Globals.DISPATCHER_REQUEST_PATH_ATTR,
                 requestPathMB);
         // Get the current (unchanged) filter chain for this request
-        ApplicationFilterChain filterChain = 
-            (ApplicationFilterChain) request.getFilterChain();
+        ApplicationFilterChain filterChain =
+                (ApplicationFilterChain) request.getFilterChain();
 
         // Call the filter chain for this request
         // NOTE: This also calls the servlet's event() method
@@ -457,7 +431,7 @@ final class StandardWrapperValve
         } catch (Throwable e) {
             ExceptionUtils.handleThrowable(e);
             container.getLogger().error(sm.getString("standardWrapper.deallocateException",
-                             wrapper.getName()), e);
+                    wrapper.getName()), e);
             if (throwable == null) {
                 throwable = e;
                 exception(request, response, e);
@@ -468,25 +442,25 @@ final class StandardWrapperValve
         // unload it and release this instance
         try {
             if ((servlet != null) &&
-                (wrapper.getAvailable() == Long.MAX_VALUE)) {
+                    (wrapper.getAvailable() == Long.MAX_VALUE)) {
                 wrapper.unload();
             }
         } catch (Throwable e) {
             ExceptionUtils.handleThrowable(e);
             container.getLogger().error(sm.getString("standardWrapper.unloadException",
-                             wrapper.getName()), e);
+                    wrapper.getName()), e);
             if (throwable == null) {
                 throwable = e;
                 exception(request, response, e);
             }
         }
 
-        long t2=System.currentTimeMillis();
+        long t2 = System.currentTimeMillis();
 
-        long time=t2-t1;
+        long time = t2 - t1;
         processingTime += time;
-        if( time > maxTime) maxTime=time;
-        if( time < minTime) minTime=time;
+        if (time > maxTime) maxTime = time;
+        if (time < minTime) minTime = time;
 
     }
 
@@ -500,10 +474,10 @@ final class StandardWrapperValve
      * exceptions that occur during generation of the exception report are
      * logged and swallowed.
      *
-     * @param request The request being processed
-     * @param response The response being generated
+     * @param request   The request being processed
+     * @param response  The response being generated
      * @param exception The exception that occurred (which possibly wraps
-     *  a root cause exception
+     *                  a root cause exception
      */
     private void exception(Request request, Response response,
                            Throwable exception) {
@@ -575,7 +549,7 @@ final class StandardWrapperValve
     public void setErrorCount(int errorCount) {
         this.errorCount = errorCount;
     }
-    
+
     @Override
     protected void initInternal() throws LifecycleException {
         // NOOP - Don't register this Valve in JMX

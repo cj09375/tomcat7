@@ -28,7 +28,6 @@ import org.junit.Assert;
 import org.junit.Assume;
 import org.junit.Test;
 
-import javax.websocket.*;
 import java.io.File;
 import java.net.URI;
 import java.net.URL;

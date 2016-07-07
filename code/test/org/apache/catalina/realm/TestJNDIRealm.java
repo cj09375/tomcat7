@@ -28,7 +28,6 @@ import org.junit.Test;
 
 import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
-import javax.naming.directory.*;
 import java.lang.reflect.Field;
 import java.security.MessageDigest;
 import java.security.Principal;

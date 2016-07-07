@@ -22,7 +22,6 @@ import org.apache.tomcat.util.buf.ByteChunk;
 import org.junit.Assert;
 import org.junit.Test;
 
-import javax.servlet.*;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

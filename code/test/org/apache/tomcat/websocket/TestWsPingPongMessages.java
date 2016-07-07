@@ -25,7 +25,6 @@ import org.apache.tomcat.websocket.TesterMessageCountClient.TesterProgrammaticEn
 import org.junit.Assert;
 import org.junit.Test;
 
-import javax.websocket.*;
 import java.net.URI;
 import java.nio.ByteBuffer;
 import java.util.concurrent.CountDownLatch;

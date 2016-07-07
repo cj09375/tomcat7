@@ -16,7 +16,6 @@
  */
 package org.apache.catalina.tribes.group;
 
-import org.apache.catalina.tribes.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

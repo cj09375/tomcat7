@@ -16,7 +16,6 @@
  */
 package websocket.echo;
 
-import javax.websocket.*;
 import java.io.IOException;
 
 public class EchoEndpoint extends Endpoint {

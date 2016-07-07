@@ -17,7 +17,6 @@
 package org.apache.catalina.tribes.group;
 
 import org.apache.catalina.startup.LoggingBaseTest;
-import org.apache.catalina.tribes.*;
 import org.apache.catalina.tribes.transport.ReplicationTransmitter;
 import org.junit.After;
 import org.junit.Before;

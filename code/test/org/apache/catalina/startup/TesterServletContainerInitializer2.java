@@ -16,7 +16,6 @@
  */
 package org.apache.catalina.startup;
 
-import javax.servlet.*;
 import java.util.Set;
 
 public class TesterServletContainerInitializer2 implements

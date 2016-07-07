@@ -25,7 +25,6 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import javax.servlet.ServletContextEvent;
-import javax.websocket.*;
 import javax.websocket.server.ServerContainer;
 import javax.websocket.server.ServerEndpointConfig;
 import java.net.URI;

@@ -16,7 +16,6 @@
  */
 package org.apache.catalina.tribes.test.channel;
 
-import org.apache.catalina.tribes.*;
 import org.apache.catalina.tribes.group.GroupChannel;
 import org.apache.catalina.tribes.group.interceptors.MessageDispatch15Interceptor;
 import org.apache.catalina.tribes.group.interceptors.ThroughputInterceptor;

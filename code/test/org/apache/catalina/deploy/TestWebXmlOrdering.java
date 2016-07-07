@@ -20,8 +20,6 @@ package org.apache.catalina.deploy;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.*;
-
 import static org.junit.Assert.*;
 
 /**

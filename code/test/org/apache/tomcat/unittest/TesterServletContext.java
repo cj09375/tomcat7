@@ -19,13 +19,11 @@ package org.apache.tomcat.unittest;
 import org.apache.catalina.core.ApplicationFilterRegistration;
 import org.apache.catalina.deploy.FilterDef;
 
-import javax.servlet.*;
 import javax.servlet.ServletRegistration.Dynamic;
 import javax.servlet.descriptor.JspConfigDescriptor;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.*;
 
 public class TesterServletContext implements ServletContext {
 

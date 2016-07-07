@@ -18,7 +18,6 @@ package org.apache.tomcat.websocket;
 
 import org.apache.tomcat.util.ExceptionUtils;
 
-import javax.websocket.*;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.ByteBuffer;

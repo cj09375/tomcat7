@@ -26,7 +26,6 @@ import org.apache.tomcat.websocket.pojo.TesterUtil.SingletonConfigurator;
 import org.junit.Assert;
 import org.junit.Test;
 
-import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
 import java.net.URI;
 import java.util.concurrent.CountDownLatch;

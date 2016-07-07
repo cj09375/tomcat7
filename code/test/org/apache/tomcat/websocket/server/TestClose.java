@@ -28,7 +28,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import javax.servlet.ServletContextEvent;
-import javax.websocket.*;
 import javax.websocket.CloseReason.CloseCode;
 import javax.websocket.CloseReason.CloseCodes;
 import javax.websocket.server.ServerContainer;

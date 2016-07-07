@@ -20,7 +20,6 @@ import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import util.HTMLFilter;
 
-import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.util.Set;

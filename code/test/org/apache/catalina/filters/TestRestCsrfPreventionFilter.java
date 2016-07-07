@@ -19,7 +19,6 @@ package org.apache.catalina.filters;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.servlet.*;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;

@@ -16,11 +16,9 @@
  */
 package org.apache.tomcat.unittest;
 
-import org.apache.catalina.*;
 import org.apache.catalina.connector.Request;
 import org.apache.catalina.connector.Response;
 import org.apache.catalina.core.ApplicationServletRegistration;
-import org.apache.catalina.deploy.*;
 import org.apache.catalina.util.CharsetMapper;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
@@ -30,12 +28,10 @@ import org.apache.tomcat.util.http.mapper.Mapper;
 
 import javax.management.ObjectName;
 import javax.naming.directory.DirContext;
-import javax.servlet.*;
 import javax.servlet.descriptor.JspConfigDescriptor;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
 import java.net.URL;
-import java.util.*;
 
 /**
  * Minimal implementation for use in unit tests.

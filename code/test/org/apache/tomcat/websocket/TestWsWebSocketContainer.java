@@ -30,7 +30,6 @@ import org.junit.Assume;
 import org.junit.Test;
 
 import javax.servlet.ServletContextEvent;
-import javax.websocket.*;
 import javax.websocket.server.ServerContainer;
 import javax.websocket.server.ServerEndpoint;
 import javax.websocket.server.ServerEndpointConfig;

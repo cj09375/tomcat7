@@ -17,7 +17,6 @@
 
 package org.apache.catalina.core;
 
-import org.apache.catalina.*;
 import org.apache.catalina.authenticator.BasicAuthenticator;
 import org.apache.catalina.deploy.FilterDef;
 import org.apache.catalina.deploy.FilterMap;
@@ -32,7 +31,6 @@ import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Test;
 
-import javax.servlet.*;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.ServletSecurity.TransportGuarantee;
 import javax.servlet.http.HttpServlet;

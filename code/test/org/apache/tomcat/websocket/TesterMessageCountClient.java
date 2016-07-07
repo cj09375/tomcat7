@@ -16,7 +16,6 @@
  */
 package org.apache.tomcat.websocket;
 
-import javax.websocket.*;
 import java.nio.ByteBuffer;
 import java.util.List;
 import java.util.Queue;

@@ -22,7 +22,6 @@ import org.apache.catalina.session.StandardSession;
 
 import javax.servlet.ServletContext;
 import javax.servlet.SessionTrackingMode;
-import java.util.*;
 
 public class TesterRequest extends Request {
 

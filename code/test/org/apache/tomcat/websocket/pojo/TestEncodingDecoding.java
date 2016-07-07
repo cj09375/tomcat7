@@ -27,14 +27,12 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import javax.servlet.ServletContextEvent;
-import javax.websocket.*;
 import javax.websocket.server.ServerContainer;
 import javax.websocket.server.ServerEndpoint;
 import javax.websocket.server.ServerEndpointConfig;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.ByteBuffer;
-import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class TestEncodingDecoding extends TomcatBaseTest {

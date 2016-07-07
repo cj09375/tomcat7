@@ -16,7 +16,6 @@
  */
 package org.apache.catalina.session;
 
-import org.apache.catalina.*;
 import org.apache.catalina.core.StandardContext;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.startup.TomcatBaseTest;
@@ -34,7 +33,6 @@ import javax.servlet.http.HttpSession;
 import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class TestPersistentManager extends TomcatBaseTest {

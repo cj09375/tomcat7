@@ -16,7 +16,6 @@
  */
 package org.apache.tomcat.jdbc.test.driver;
 
-import java.sql.*;
 import java.util.Properties;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Logger;

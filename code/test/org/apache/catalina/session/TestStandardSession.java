@@ -21,7 +21,6 @@ import org.apache.catalina.core.StandardContext;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.*;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;

@@ -19,7 +19,6 @@ package org.apache.tomcat.websocket;
 import org.junit.Assert;
 import org.junit.Test;
 
-import javax.websocket.*;
 import javax.websocket.Extension.Parameter;
 import java.util.ArrayList;
 import java.util.List;

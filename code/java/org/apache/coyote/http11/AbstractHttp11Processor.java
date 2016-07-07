@@ -16,30 +16,8 @@
  */
 package org.apache.coyote.http11;
 
-import java.io.IOException;
-import java.io.InterruptedIOException;
-import java.util.Locale;
-import java.util.Set;
-import java.util.StringTokenizer;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.regex.Pattern;
-
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.coyote.AbstractProcessor;
-import org.apache.coyote.ActionCode;
-import org.apache.coyote.AsyncContextCallback;
-import org.apache.coyote.ErrorState;
-import org.apache.coyote.RequestInfo;
-import org.apache.coyote.http11.filters.BufferedInputFilter;
-import org.apache.coyote.http11.filters.ChunkedInputFilter;
-import org.apache.coyote.http11.filters.ChunkedOutputFilter;
-import org.apache.coyote.http11.filters.GzipOutputFilter;
-import org.apache.coyote.http11.filters.IdentityInputFilter;
-import org.apache.coyote.http11.filters.IdentityOutputFilter;
-import org.apache.coyote.http11.filters.SavedRequestInputFilter;
-import org.apache.coyote.http11.filters.VoidInputFilter;
-import org.apache.coyote.http11.filters.VoidOutputFilter;
+import org.apache.coyote.*;
+import org.apache.coyote.http11.filters.*;
 import org.apache.coyote.http11.upgrade.servlet31.HttpUpgradeHandler;
 import org.apache.tomcat.util.ExceptionUtils;
 import org.apache.tomcat.util.buf.Ascii;
@@ -55,6 +33,15 @@ import org.apache.tomcat.util.net.SocketStatus;
 import org.apache.tomcat.util.net.SocketWrapper;
 import org.apache.tomcat.util.res.StringManager;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.InterruptedIOException;
+import java.util.Locale;
+import java.util.Set;
+import java.util.StringTokenizer;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.regex.Pattern;
+
 public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
 
     private final UserDataHelper userDataHelper;
@@ -63,7 +50,7 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
      * The string manager for this package.
      */
     protected static final StringManager sm =
-        StringManager.getManager(Constants.Package);
+            StringManager.getManager(Constants.Package);
 
     /*
      * Tracks how many internal filters are in the filter library so they
@@ -237,7 +224,7 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
      * List of MIMES which could be gzipped
      */
     protected String[] compressableMimeTypes =
-    { "text/html", "text/xml", "text/plain" };
+            {"text/html", "text/xml", "text/plain"};
 
 
     /**
@@ -255,8 +242,8 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
     /**
      * Listener to which data available events are passed once the associated
      * connection has completed the proprietary Tomcat HTTP upgrade process.
-     * 
-     * @deprecated  Will be removed in Tomcat 8.0.x.
+     *
+     * @deprecated Will be removed in Tomcat 8.0.x.
      */
     @Deprecated
     protected org.apache.coyote.http11.upgrade.UpgradeInbound upgradeInbound = null;
@@ -267,8 +254,8 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
      * upgraded using the Servlet 3.1 based upgrade process.
      */
     protected HttpUpgradeHandler httpUpgradeHandler = null;
-    
-    
+
+
     public AbstractHttp11Processor(AbstractEndpoint<S> endpoint) {
         super(endpoint);
         userDataHelper = new UserDataHelper(getLog());
@@ -308,7 +295,7 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
     /**
      * Set no compression user agent pattern. Regular expression as supported
      * by {@link Pattern}.
-     *
+     * <p>
      * ie: "gorilla|desesplorer|tigrus"
      */
     public void setNoCompressionUserAgents(String noCompressionUserAgents) {
@@ -316,7 +303,7 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
             this.noCompressionUserAgents = null;
         } else {
             this.noCompressionUserAgents =
-                Pattern.compile(noCompressionUserAgents);
+                    Pattern.compile(noCompressionUserAgents);
         }
     }
 
@@ -329,7 +316,7 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
      */
     public void addCompressableMimeType(String mimeType) {
         compressableMimeTypes =
-            addStringArray(compressableMimeTypes, mimeType);
+                addStringArray(compressableMimeTypes, mimeType);
     }
 
 
@@ -346,7 +333,7 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
     /**
      * Set compressable mime-type list
      * List contains users agents separated by ',' :
-     *
+     * <p>
      * ie: "text/html,text/xml,text/plain"
      */
     public void setCompressableMimeTypes(String compressableMimeTypes) {
@@ -366,12 +353,12 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
      */
     public String getCompression() {
         switch (compressionLevel) {
-        case 0:
-            return "off";
-        case 1:
-            return "on";
-        case 2:
-            return "force";
+            case 0:
+                return "off";
+            case 1:
+                return "on";
+            case 2:
+                return "force";
         }
         return "off";
     }
@@ -381,15 +368,14 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
      * General use method
      *
      * @param sArray the StringArray
-     * @param value string
+     * @param value  string
      */
     private String[] addStringArray(String sArray[], String value) {
         String[] result = null;
         if (sArray == null) {
             result = new String[1];
             result[0] = value;
-        }
-        else {
+        } else {
             result = new String[sArray.length + 1];
             for (int i = 0; i < sArray.length; i++) {
                 result[i] = sArray[i];
@@ -404,7 +390,7 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
      * Checks if any entry in the string array starts with the specified value
      *
      * @param sArray the StringArray
-     * @param value string
+     * @param value  string
      */
     private boolean startsWithStringArray(String sArray[], String value) {
         if (value == null) {
@@ -422,7 +408,7 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
     /**
      * Set restricted user agent list (which will downgrade the connector
      * to HTTP/1.0 mode). Regular expression as supported by {@link Pattern}.
-     *
+     * <p>
      * ie: "gorilla|desesplorer|tigrus"
      */
     public void setRestrictedUserAgents(String restrictedUserAgents) {
@@ -516,7 +502,7 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
      * Set the upload timeout.
      */
     public void setConnectionUploadTimeout(int timeout) {
-        connectionUploadTimeout = timeout ;
+        connectionUploadTimeout = timeout;
     }
 
     /**
@@ -530,8 +516,8 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
     /**
      * Set the server header name.
      */
-    public void setServer( String server ) {
-        if (server==null || server.equals("")) {
+    public void setServer(String server) {
+        if (server == null || server.equals("")) {
             this.server = null;
         } else {
             this.server = server;
@@ -553,10 +539,10 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
 
         // Check if content is not already gzipped
         MessageBytes contentEncodingMB =
-            response.getMimeHeaders().getValue("Content-Encoding");
+                response.getMimeHeaders().getValue("Content-Encoding");
 
         if ((contentEncodingMB != null)
-            && (contentEncodingMB.indexOf("gzip") != -1)) {
+                && (contentEncodingMB.indexOf("gzip") != -1)) {
             return false;
         }
 
@@ -568,11 +554,11 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
         // Check if sufficient length to trigger the compression
         long contentLength = response.getContentLengthLong();
         if ((contentLength == -1)
-            || (contentLength > compressionMinSize)) {
+                || (contentLength > compressionMinSize)) {
             // Check for compatible MIME-TYPE
             if (compressableMimeTypes != null) {
                 return (startsWithStringArray(compressableMimeTypes,
-                                              response.getContentType()));
+                        response.getContentType()));
             }
         }
 
@@ -588,10 +574,10 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
 
         // Check if browser support gzip encoding
         MessageBytes acceptEncodingMB =
-            request.getMimeHeaders().getValue("accept-encoding");
+                request.getMimeHeaders().getValue("accept-encoding");
 
         if ((acceptEncodingMB == null)
-            || (acceptEncodingMB.indexOf("gzip") == -1)) {
+                || (acceptEncodingMB.indexOf("gzip") == -1)) {
             return false;
         }
 
@@ -603,8 +589,8 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
         // Check for incompatible Browser
         if (noCompressionUserAgents != null) {
             MessageBytes userAgentValueMB =
-                request.getMimeHeaders().getValue("user-agent");
-            if(userAgentValueMB != null) {
+                    request.getMimeHeaders().getValue("user-agent");
+            if (userAgentValueMB != null) {
                 String userAgentValue = userAgentValueMB.toString();
 
                 if (noCompressionUserAgents.matcher(userAgentValue).matches()) {
@@ -636,8 +622,8 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
                 continue;
             }
             // found first char, now look for a match
-            int myPos = i+1;
-            for (int srcPos = 1; srcPos < srcEnd;) {
+            int myPos = i + 1;
+            for (int srcPos = 1; srcPos < srcEnd; ) {
                 if (Ascii.toLower(buff[myPos++]) != b[srcPos++]) {
                     break;
                 }
@@ -656,26 +642,28 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
      */
     protected boolean statusDropsConnection(int status) {
         return status == 400 /* SC_BAD_REQUEST */ ||
-               status == 408 /* SC_REQUEST_TIMEOUT */ ||
-               status == 411 /* SC_LENGTH_REQUIRED */ ||
-               status == 413 /* SC_REQUEST_ENTITY_TOO_LARGE */ ||
-               status == 414 /* SC_REQUEST_URI_TOO_LONG */ ||
-               status == 500 /* SC_INTERNAL_SERVER_ERROR */ ||
-               status == 503 /* SC_SERVICE_UNAVAILABLE */ ||
-               status == 501 /* SC_NOT_IMPLEMENTED */;
+                status == 408 /* SC_REQUEST_TIMEOUT */ ||
+                status == 411 /* SC_LENGTH_REQUIRED */ ||
+                status == 413 /* SC_REQUEST_ENTITY_TOO_LARGE */ ||
+                status == 414 /* SC_REQUEST_URI_TOO_LONG */ ||
+                status == 500 /* SC_INTERNAL_SERVER_ERROR */ ||
+                status == 503 /* SC_SERVICE_UNAVAILABLE */ ||
+                status == 501 /* SC_NOT_IMPLEMENTED */;
     }
 
 
     /**
      * Exposes input buffer to super class to allow better code re-use.
-     * @return  The input buffer used by the processor.
+     *
+     * @return The input buffer used by the processor.
      */
     protected abstract AbstractInputBuffer<S> getInputBuffer();
 
 
     /**
      * Exposes output buffer to super class to allow better code re-use.
-     * @return  The output buffer used by the processor.
+     *
+     * @return The output buffer used by the processor.
      */
     protected abstract AbstractOutputBuffer<S> getOutputBuffer();
 
@@ -684,13 +672,13 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
      * Initialize standard input and output filters.
      */
     protected void initializeFilters(int maxTrailerSize, Set<String> allowedTrailerHeaders,
-            int maxExtensionSize, int maxSwallowSize) {
+                                     int maxExtensionSize, int maxSwallowSize) {
         // Create and add the identity filters.
         getInputBuffer().addFilter(new IdentityInputFilter(maxSwallowSize));
         getOutputBuffer().addFilter(new IdentityOutputFilter());
 
         // Create and add the chunked filters.
-        getInputBuffer().addFilter( new ChunkedInputFilter(maxTrailerSize,allowedTrailerHeaders,
+        getInputBuffer().addFilter(new ChunkedInputFilter(maxTrailerSize, allowedTrailerHeaders,
                 maxExtensionSize, maxSwallowSize));
         getOutputBuffer().addFilter(new ChunkedOutputFilter());
 
@@ -723,7 +711,7 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
             // Skip
         } else if (encodingName.equals("chunked")) {
             getInputBuffer().addActiveFilter
-                (inputFilters[Constants.CHUNKED_FILTER]);
+                    (inputFilters[Constants.CHUNKED_FILTER]);
             contentDelimitation = true;
         } else {
             for (int i = pluggableFilterIndex; i < inputFilters.length; i++) {
@@ -738,7 +726,7 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
             setErrorState(ErrorState.CLOSE_CLEAN, null);
             if (getLog().isDebugEnabled()) {
                 getLog().debug(sm.getString("http11processor.request.prepare") +
-                          " Unsupported transfer encoding [" + encodingName + "]");
+                        " Unsupported transfer encoding [" + encodingName + "]");
             }
         }
     }
@@ -748,168 +736,168 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
      * Send an action to the connector.
      *
      * @param actionCode Type of the action
-     * @param param Action parameter
+     * @param param      Action parameter
      */
     @Override
     @SuppressWarnings("deprecation") // Inbound/Outbound based upgrade mechanism
     public final void action(ActionCode actionCode, Object param) {
 
         switch (actionCode) {
-        case CLOSE: {
-            // End the processing of the current request
-            try {
-                getOutputBuffer().endRequest();
-            } catch (IOException e) {
-                setErrorState(ErrorState.CLOSE_NOW, e);
+            case CLOSE: {
+                // End the processing of the current request
+                try {
+                    getOutputBuffer().endRequest();
+                } catch (IOException e) {
+                    setErrorState(ErrorState.CLOSE_NOW, e);
+                }
+                break;
             }
-            break;
-        }
-        case COMMIT: {
-            // Commit current response
-            if (response.isCommitted()) {
-                return;
-            }
+            case COMMIT: {
+                // Commit current response
+                if (response.isCommitted()) {
+                    return;
+                }
 
-            // Validate and write response headers
-            try {
-                prepareResponse();
-                getOutputBuffer().commit();
-            } catch (IOException e) {
-                setErrorState(ErrorState.CLOSE_NOW, e);
+                // Validate and write response headers
+                try {
+                    prepareResponse();
+                    getOutputBuffer().commit();
+                } catch (IOException e) {
+                    setErrorState(ErrorState.CLOSE_NOW, e);
+                }
+                break;
             }
-            break;
-        }
-        case ACK: {
-            // Acknowledge request
-            // Send a 100 status back if it makes sense (response not committed
-            // yet, and client specified an expectation for 100-continue)
-            if ((response.isCommitted()) || !expectation) {
-                return;
-            }
+            case ACK: {
+                // Acknowledge request
+                // Send a 100 status back if it makes sense (response not committed
+                // yet, and client specified an expectation for 100-continue)
+                if ((response.isCommitted()) || !expectation) {
+                    return;
+                }
 
-            getInputBuffer().setSwallowInput(true);
-            try {
-                getOutputBuffer().sendAck();
-            } catch (IOException e) {
-                setErrorState(ErrorState.CLOSE_NOW, e);
+                getInputBuffer().setSwallowInput(true);
+                try {
+                    getOutputBuffer().sendAck();
+                } catch (IOException e) {
+                    setErrorState(ErrorState.CLOSE_NOW, e);
+                }
+                break;
             }
-            break;
-        }
-        case CLIENT_FLUSH: {
-            try {
-                getOutputBuffer().flush();
-            } catch (IOException e) {
-                setErrorState(ErrorState.CLOSE_NOW, e);
-                response.setErrorException(e);
+            case CLIENT_FLUSH: {
+                try {
+                    getOutputBuffer().flush();
+                } catch (IOException e) {
+                    setErrorState(ErrorState.CLOSE_NOW, e);
+                    response.setErrorException(e);
+                }
+                break;
             }
-            break;
-        }
-        case IS_ERROR: {
-            ((AtomicBoolean) param).set(getErrorState().isError());
-            break;
-        }
-        case DISABLE_SWALLOW_INPUT: {
-            // Do not swallow request input and make sure we are closing the
-            // connection
-            setErrorState(ErrorState.CLOSE_CLEAN, null);
-            getInputBuffer().setSwallowInput(false);
-            break;
-        }
-        case RESET: {
-            // Note: This must be called before the response is committed
-            getOutputBuffer().reset();
-            break;
-        }
-        case CUSTOM: {
-            // Do nothing
-            // TODO Remove this action
-            break;
-        }
-        case REQ_SET_BODY_REPLAY: {
-            ByteChunk body = (ByteChunk) param;
+            case IS_ERROR: {
+                ((AtomicBoolean) param).set(getErrorState().isError());
+                break;
+            }
+            case DISABLE_SWALLOW_INPUT: {
+                // Do not swallow request input and make sure we are closing the
+                // connection
+                setErrorState(ErrorState.CLOSE_CLEAN, null);
+                getInputBuffer().setSwallowInput(false);
+                break;
+            }
+            case RESET: {
+                // Note: This must be called before the response is committed
+                getOutputBuffer().reset();
+                break;
+            }
+            case CUSTOM: {
+                // Do nothing
+                // TODO Remove this action
+                break;
+            }
+            case REQ_SET_BODY_REPLAY: {
+                ByteChunk body = (ByteChunk) param;
 
-            InputFilter savedBody = new SavedRequestInputFilter(body);
-            savedBody.setRequest(request);
+                InputFilter savedBody = new SavedRequestInputFilter(body);
+                savedBody.setRequest(request);
 
-            @SuppressWarnings("unchecked")
-            AbstractInputBuffer<S> internalBuffer = (AbstractInputBuffer<S>)
-                request.getInputBuffer();
-            internalBuffer.addActiveFilter(savedBody);
-            break;
-        }
-        case ASYNC_START: {
-            asyncStateMachine.asyncStart((AsyncContextCallback) param);
-            // Async time out is based on SocketWrapper access time
-            getSocketWrapper().access();
-            break;
-        }
-        case ASYNC_DISPATCHED: {
-            asyncStateMachine.asyncDispatched();
-            break;
-        }
-        case ASYNC_TIMEOUT: {
-            AtomicBoolean result = (AtomicBoolean) param;
-            result.set(asyncStateMachine.asyncTimeout());
-            break;
-        }
-        case ASYNC_RUN: {
-            asyncStateMachine.asyncRun((Runnable) param);
-            break;
-        }
-        case ASYNC_ERROR: {
-            asyncStateMachine.asyncError();
-            break;
-        }
-        case ASYNC_IS_STARTED: {
-            ((AtomicBoolean) param).set(asyncStateMachine.isAsyncStarted());
-            break;
-        }
-        case ASYNC_IS_COMPLETING: {
-            ((AtomicBoolean) param).set(asyncStateMachine.isCompleting());
-            break;
-        }
-        case ASYNC_IS_DISPATCHING: {
-            ((AtomicBoolean) param).set(asyncStateMachine.isAsyncDispatching());
-            break;
-        }
-        case ASYNC_IS_ASYNC: {
-            ((AtomicBoolean) param).set(asyncStateMachine.isAsync());
-            break;
-        }
-        case ASYNC_IS_TIMINGOUT: {
-            ((AtomicBoolean) param).set(asyncStateMachine.isAsyncTimingOut());
-            break;
-        }
-        case ASYNC_IS_ERROR: {
-            ((AtomicBoolean) param).set(asyncStateMachine.isAsyncError());
-            break;
-        }
-        case UPGRADE_TOMCAT: {
-            upgradeInbound = (org.apache.coyote.http11.upgrade.UpgradeInbound) param;
-            // Stop further HTTP output
-            getOutputBuffer().finished = true;
-            break;
-        }
-        case UPGRADE: {
-            httpUpgradeHandler = (HttpUpgradeHandler) param;
-            // Stop further HTTP output
-            getOutputBuffer().finished = true;
-            break;
-        }
-        case CLOSE_NOW: {
-            // Block further output
-            getOutputBuffer().finished = true;
-            setErrorState(ErrorState.CLOSE_NOW, null);
-            break;
-        }
-        case END_REQUEST: {
-            endRequest();
-            break;
-        }
-        default: {
-            actionInternal(actionCode, param);
-            break;
-        }
+                @SuppressWarnings("unchecked")
+                AbstractInputBuffer<S> internalBuffer = (AbstractInputBuffer<S>)
+                        request.getInputBuffer();
+                internalBuffer.addActiveFilter(savedBody);
+                break;
+            }
+            case ASYNC_START: {
+                asyncStateMachine.asyncStart((AsyncContextCallback) param);
+                // Async time out is based on SocketWrapper access time
+                getSocketWrapper().access();
+                break;
+            }
+            case ASYNC_DISPATCHED: {
+                asyncStateMachine.asyncDispatched();
+                break;
+            }
+            case ASYNC_TIMEOUT: {
+                AtomicBoolean result = (AtomicBoolean) param;
+                result.set(asyncStateMachine.asyncTimeout());
+                break;
+            }
+            case ASYNC_RUN: {
+                asyncStateMachine.asyncRun((Runnable) param);
+                break;
+            }
+            case ASYNC_ERROR: {
+                asyncStateMachine.asyncError();
+                break;
+            }
+            case ASYNC_IS_STARTED: {
+                ((AtomicBoolean) param).set(asyncStateMachine.isAsyncStarted());
+                break;
+            }
+            case ASYNC_IS_COMPLETING: {
+                ((AtomicBoolean) param).set(asyncStateMachine.isCompleting());
+                break;
+            }
+            case ASYNC_IS_DISPATCHING: {
+                ((AtomicBoolean) param).set(asyncStateMachine.isAsyncDispatching());
+                break;
+            }
+            case ASYNC_IS_ASYNC: {
+                ((AtomicBoolean) param).set(asyncStateMachine.isAsync());
+                break;
+            }
+            case ASYNC_IS_TIMINGOUT: {
+                ((AtomicBoolean) param).set(asyncStateMachine.isAsyncTimingOut());
+                break;
+            }
+            case ASYNC_IS_ERROR: {
+                ((AtomicBoolean) param).set(asyncStateMachine.isAsyncError());
+                break;
+            }
+            case UPGRADE_TOMCAT: {
+                upgradeInbound = (org.apache.coyote.http11.upgrade.UpgradeInbound) param;
+                // Stop further HTTP output
+                getOutputBuffer().finished = true;
+                break;
+            }
+            case UPGRADE: {
+                httpUpgradeHandler = (HttpUpgradeHandler) param;
+                // Stop further HTTP output
+                getOutputBuffer().finished = true;
+                break;
+            }
+            case CLOSE_NOW: {
+                // Block further output
+                getOutputBuffer().finished = true;
+                setErrorState(ErrorState.CLOSE_NOW, null);
+                break;
+            }
+            case END_REQUEST: {
+                endRequest();
+                break;
+            }
+            default: {
+                actionInternal(actionCode, param);
+                break;
+            }
         }
     }
 
@@ -934,7 +922,7 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
      * Defines how a connector handles an incomplete request line read.
      *
      * @return <code>true</code> if the processor should break out of the
-     *         processing loop, otherwise <code>false</code>.
+     * processing loop, otherwise <code>false</code>.
      */
     protected abstract boolean handleIncompleteRequestLineRead();
 
@@ -950,13 +938,11 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
      * streams.
      *
      * @param socketWrapper Socket from which the HTTP requests will be read
-     *               and the HTTP responses will be written.
-     *
+     *                      and the HTTP responses will be written.
      * @throws IOException error during an I/O operation
      */
     @Override
-    public SocketState process(SocketWrapper<S> socketWrapper)
-        throws IOException {
+    public SocketState process(SocketWrapper<S> socketWrapper) throws IOException {
         RequestInfo rp = request.getRequestProcessor();
         rp.setStage(org.apache.coyote.Constants.STAGE_PARSE);
 
@@ -1017,8 +1003,7 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
                 }
             } catch (IOException e) {
                 if (getLog().isDebugEnabled()) {
-                    getLog().debug(
-                            sm.getString("http11processor.header.parse"), e);
+                    getLog().debug(sm.getString("http11processor.header.parse"), e);
                 }
                 setErrorState(ErrorState.CLOSE_NOW, e);
                 break;
@@ -1026,12 +1011,10 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
                 ExceptionUtils.handleThrowable(t);
                 UserDataHelper.Mode logMode = userDataHelper.getNextMode();
                 if (logMode != null) {
-                    String message = sm.getString(
-                            "http11processor.header.parse");
+                    String message = sm.getString("http11processor.header.parse");
                     switch (logMode) {
                         case INFO_THEN_DEBUG:
-                            message += sm.getString(
-                                    "http11processor.fallToDebug");
+                            message += sm.getString("http11processor.fallToDebug");
                             //$FALL-THROUGH$
                         case INFO:
                             getLog().info(message, t);
@@ -1054,8 +1037,7 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
                 } catch (Throwable t) {
                     ExceptionUtils.handleThrowable(t);
                     if (getLog().isDebugEnabled()) {
-                        getLog().debug(sm.getString(
-                                "http11processor.request.prepare"), t);
+                        getLog().debug(sm.getString("http11processor.request.prepare"), t);
                     }
                     // 500 - Internal Server Error
                     response.setStatus(500);
@@ -1066,8 +1048,7 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
 
             if (maxKeepAliveRequests == 1) {
                 keepAlive = false;
-            } else if (maxKeepAliveRequests > 0 &&
-                    socketWrapper.decrementKeepAlive() <= 0) {
+            } else if (maxKeepAliveRequests > 0 && socketWrapper.decrementKeepAlive() <= 0) {
                 keepAlive = false;
             }
 
@@ -1081,10 +1062,10 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
                     // set the status to 500 and set the errorException.
                     // If we fail here, then the response is likely already
                     // committed, so we can't try and set headers.
-                    if(keepAlive && !getErrorState().isError() && (
+                    if (keepAlive && !getErrorState().isError() && (
                             response.getErrorException() != null ||
                                     (!isAsync() &&
-                                    statusDropsConnection(response.getStatus())))) {
+                                            statusDropsConnection(response.getStatus())))) {
                         setErrorState(ErrorState.CLOSE_CLEAN, null);
                     }
                     setCometTimeouts(socketWrapper);
@@ -1147,7 +1128,7 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
             }
 
             if (!disableUploadTimeout) {
-                if(endpoint.getSoTimeout() > 0) {
+                if (endpoint.getSoTimeout() > 0) {
                     setSocketTimeout(endpoint.getSoTimeout());
                 } else {
                     setSocketTimeout(0);
@@ -1238,8 +1219,8 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
             response.setStatus(505);
             setErrorState(ErrorState.CLOSE_CLEAN, null);
             if (getLog().isDebugEnabled()) {
-                getLog().debug(sm.getString("http11processor.request.prepare")+
-                          " Unsupported HTTP version \""+protocolMB+"\"");
+                getLog().debug(sm.getString("http11processor.request.prepare") +
+                        " Unsupported HTTP version \"" + protocolMB + "\"");
             }
         }
 
@@ -1259,7 +1240,7 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
             if (findBytes(connectionValueBC, Constants.CLOSE_BYTES) != -1) {
                 keepAlive = false;
             } else if (findBytes(connectionValueBC,
-                                 Constants.KEEPALIVE_BYTES) != -1) {
+                    Constants.KEEPALIVE_BYTES) != -1) {
                 keepAlive = true;
             }
         }
@@ -1283,7 +1264,7 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
             MessageBytes userAgentValueMB = headers.getValue("user-agent");
             // Check in the restricted list, and adjust the http11
             // and keepAlive flags accordingly
-            if(userAgentValueMB != null) {
+            if (userAgentValueMB != null) {
                 String userAgentValue = userAgentValueMB.toString();
                 if (restrictedUserAgents.matcher(userAgentValue).matches()) {
                     http11 = false;
@@ -1306,15 +1287,15 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
                     slashPos = uriBC.getLength();
                     // Set URI as "/"
                     request.requestURI().setBytes
-                        (uriB, uriBCStart + pos + 1, 1);
+                            (uriB, uriBCStart + pos + 1, 1);
                 } else {
                     request.requestURI().setBytes
-                        (uriB, uriBCStart + slashPos,
-                         uriBC.getLength() - slashPos);
+                            (uriB, uriBCStart + slashPos,
+                                    uriBC.getLength() - slashPos);
                 }
                 MessageBytes hostMB = headers.setValue("host");
                 hostMB.setBytes(uriB, uriBCStart + pos + 3,
-                                slashPos - pos - 3);
+                        slashPos - pos - 3);
             }
 
         }
@@ -1369,8 +1350,8 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
             response.setStatus(400);
             setErrorState(ErrorState.CLOSE_CLEAN, null);
             if (getLog().isDebugEnabled()) {
-                getLog().debug(sm.getString("http11processor.request.prepare")+
-                          " host header missing");
+                getLog().debug(sm.getString("http11processor.request.prepare") +
+                        " host header missing");
             }
         }
 
@@ -1430,7 +1411,7 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
         if (http09 == true) {
             // HTTP/0.9
             getOutputBuffer().addActiveFilter
-                (outputFilters[Constants.IDENTITY_FILTER]);
+                    (outputFilters[Constants.IDENTITY_FILTER]);
             return;
         }
 
@@ -1439,7 +1420,7 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
                 statusCode == 304) {
             // No entity body
             getOutputBuffer().addActiveFilter
-                (outputFilters[Constants.VOID_FILTER]);
+                    (outputFilters[Constants.VOID_FILTER]);
             entityBody = false;
             contentDelimitation = true;
         }
@@ -1448,7 +1429,7 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
         if (methodMB.equals("HEAD")) {
             // No entity body
             getOutputBuffer().addActiveFilter
-                (outputFilters[Constants.VOID_FILTER]);
+                    (outputFilters[Constants.VOID_FILTER]);
             contentDelimitation = true;
         }
 
@@ -1485,7 +1466,7 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
             String contentLanguage = response.getContentLanguage();
             if (contentLanguage != null) {
                 headers.setValue("Content-Language")
-                    .setString(contentLanguage);
+                        .setString(contentLanguage);
             }
         }
 
@@ -1494,7 +1475,7 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
         if (contentLength != -1) {
             headers.setValue("Content-Length").setLong(contentLength);
             getOutputBuffer().addActiveFilter
-                (outputFilters[Constants.IDENTITY_FILTER]);
+                    (outputFilters[Constants.IDENTITY_FILTER]);
             contentDelimitation = true;
         } else {
             // If the response code supports an entity body and we're on
@@ -1502,12 +1483,12 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
             connectionClosePresent = isConnectionClose(headers);
             if (entityBody && http11 && !connectionClosePresent) {
                 getOutputBuffer().addActiveFilter
-                    (outputFilters[Constants.CHUNKED_FILTER]);
+                        (outputFilters[Constants.CHUNKED_FILTER]);
                 contentDelimitation = true;
                 headers.addValue(Constants.TRANSFERENCODING).setString(Constants.CHUNKED);
             } else {
                 getOutputBuffer().addActiveFilter
-                    (outputFilters[Constants.IDENTITY_FILTER]);
+                        (outputFilters[Constants.IDENTITY_FILTER]);
             }
         }
 
@@ -1720,7 +1701,7 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
 
 
     /**
-     * @deprecated  Will be removed in Tomcat 8.0.x.
+     * @deprecated Will be removed in Tomcat 8.0.x.
      */
     @Deprecated
     @Override
@@ -1733,8 +1714,8 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
     public boolean isUpgrade() {
         return httpUpgradeHandler != null;
     }
-    
-    
+
+
     @Override
     public SocketState upgradeDispatch(SocketStatus status) throws IOException {
         // Should never reach this code but in case we do...
@@ -1747,8 +1728,8 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
     public HttpUpgradeHandler getHttpUpgradeHandler() {
         return httpUpgradeHandler;
     }
-    
-    
+
+
     /**
      * Provides a mechanism for those connector implementations (currently only
      * NIO) that need to reset timeouts from Async timeouts to standard HTTP
@@ -1799,11 +1780,11 @@ public abstract class AbstractHttp11Processor<S> extends AbstractProcessor<S> {
      * Checks to see if the keep-alive loop should be broken, performing any
      * processing (e.g. sendfile handling) that may have an impact on whether
      * or not the keep-alive loop should be broken.
+     *
      * @return true if the keep-alive loop should be broken
      */
     protected abstract boolean breakKeepAliveLoop(
             SocketWrapper<S> socketWrapper);
-
 
 
     @Override

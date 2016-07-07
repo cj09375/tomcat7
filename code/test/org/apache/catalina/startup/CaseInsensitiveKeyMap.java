@@ -16,8 +16,6 @@
  */
 package org.apache.catalina.startup;
 
-import java.util.*;
-
 /**
  * A Map implementation that uses case-insensitive (using {@link
  * Locale#ENGLISH}) strings as keys.

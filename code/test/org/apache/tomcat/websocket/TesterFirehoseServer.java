@@ -20,7 +20,6 @@ import org.apache.tomcat.websocket.server.Constants;
 import org.apache.tomcat.websocket.server.WsContextListener;
 
 import javax.servlet.ServletContextEvent;
-import javax.websocket.*;
 import javax.websocket.RemoteEndpoint.Basic;
 import javax.websocket.server.ServerContainer;
 import javax.websocket.server.ServerEndpoint;

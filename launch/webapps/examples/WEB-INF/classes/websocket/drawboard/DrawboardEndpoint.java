@@ -21,7 +21,6 @@ import org.apache.juli.logging.LogFactory;
 import websocket.drawboard.DrawMessage.ParseException;
 import websocket.drawboard.wsmessages.StringWebsocketMessage;
 
-import javax.websocket.*;
 import java.io.EOFException;
 
 
