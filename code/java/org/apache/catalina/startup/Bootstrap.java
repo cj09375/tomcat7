@@ -284,8 +284,7 @@ public final class Bootstrap {
     /**
      * Initialize daemon.
      */
-    public void init()
-            throws Exception {
+    public void init() throws Exception {
 
         // Set Catalina path
         setCatalinaHome();
@@ -300,23 +299,20 @@ public final class Bootstrap {
         // Load our startup class and call its process() method
         if (log.isDebugEnabled())
             log.debug("Loading startup class");
-        Class<?> startupClass =
-                catalinaLoader.loadClass
-                        ("org.apache.catalina.startup.Catalina");
+        Class<?> startupClass = catalinaLoader.loadClass("org.apache.catalina.startup.Catalina");
         Object startupInstance = startupClass.newInstance();
-
         // Set the shared extensions class loader
-        if (log.isDebugEnabled())
+        if (log.isDebugEnabled()) {
             log.debug("Setting startup class properties");
+        }
+
         String methodName = "setParentClassLoader";
         Class<?> paramTypes[] = new Class[1];
         paramTypes[0] = Class.forName("java.lang.ClassLoader");
         Object paramValues[] = new Object[1];
         paramValues[0] = sharedLoader;
-        Method method =
-                startupInstance.getClass().getMethod(methodName, paramTypes);
+        Method method = startupInstance.getClass().getMethod(methodName, paramTypes);
         method.invoke(startupInstance, paramValues);
-
         catalinaDaemon = startupInstance;
 
     }
